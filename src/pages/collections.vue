@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto p-5">
-    <div class="font-bold text-xl flex justify-between items-center">
-      <div>Collections</div>
+    <div class="flex justify-between items-center">
+      <div class="font-bold text-xl">Collections</div>
 
       <a-input placeholder="search" class="max-w-64">
         <template #prefix>
