@@ -9,7 +9,7 @@
         <div class="h-16"></div>
 
         <a-layout-content class="bg-white p-5 ml-[200px]" style="min-height: calc(100vh - 104px)">
-          <slot></slot>
+          <RouterView />
         </a-layout-content>
       </a-layout>
     </a-layout>
@@ -17,8 +17,8 @@
 </template>
 
 <script lang="ts" setup>
-import Header from './Header.vue'
-import Menu from './Menu.vue'
+import Header from './components/Header.vue'
+import Menu from './components/Menu.vue'
 </script>
 
 <style scoped>

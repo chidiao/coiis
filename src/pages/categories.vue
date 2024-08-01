@@ -17,12 +17,15 @@
     </div>
 
     <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-5 my-5">
-      <Categorie v-for="i in 16" :value="i" />
+      <Categorie v-for="i in 16" :value="i" @click="router.push('/search')" />
     </div>
   </div>
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router'
 import Categorie from '@/components/Categorie.vue'
 import { SearchOutlined } from '@ant-design/icons-vue'
+
+const router = useRouter()
 </script>

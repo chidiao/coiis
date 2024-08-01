@@ -12,7 +12,7 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { HomeOutlined, CheckSquareOutlined } from '@ant-design/icons-vue'
+import { HomeOutlined, CheckSquareOutlined, DribbbleOutlined } from '@ant-design/icons-vue'
 
 const menus = [
   {
@@ -28,7 +28,7 @@ const menus = [
   {
     route: '/categories',
     label: 'Categories',
-    icon: CheckSquareOutlined
+    icon: DribbbleOutlined
   }
 ]
 const selectedKeys = ref<string[]>([])
