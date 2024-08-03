@@ -12,7 +12,8 @@ const routes = [
     children: [
       { path: '/', component: () => import('@/pages/home/index.vue') },
       { path: '/collections', component: () => import('@/pages/collections.vue') },
-      { path: '/categories', component: () => import('@/pages/categories.vue') }
+      { path: '/categories', component: () => import('@/pages/categories.vue') },
+      { path: '/workspace', component: () => import('@/pages/workspace/index.vue') }
     ]
   }
 ]
