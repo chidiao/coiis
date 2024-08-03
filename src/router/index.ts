@@ -2,6 +2,10 @@ import { createWebHistory, createRouter } from 'vue-router'
 
 const routes = [
   {
+    path: '/test',
+    component: () => import('@/pages/test.vue')
+  },
+  {
     path: '/search',
     component: () => import('@/layouts/FixHeader.vue'),
     children: [{ path: '/search', component: () => import('@/pages/search/index.vue') }]
@@ -20,5 +24,8 @@ const routes = [
 
 export default createRouter({
   history: createWebHistory(),
-  routes
+  routes,
+  scrollBehavior: () => {
+    return { top: 0 }
+  }
 })

@@ -3,7 +3,7 @@
     <div class="flex justify-between items-center">
       <div class="w-1/2">
         <div class="font-bold text-xl">API Categories</div>
-        <div class="text-sm text-gray-400 mt-2">
+        <div class="text-sm text-gray-500 mt-2">
           Embark on a journey through our extensive array of categories, where you'll find a treasure trove of
           exceptional APIs, just waiting to be discovered and utilized for your specific needs.
         </div>

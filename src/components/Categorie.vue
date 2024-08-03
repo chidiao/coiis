@@ -10,7 +10,7 @@
 
       <div class="w-full h-20">
         <div class="text-base line-clamp-2 mt-3">sports</div>
-        <div class="text-xs line-clamp-2 mt-2 text-gray-400">
+        <div class="text-xs line-clamp-2 mt-2 text-gray-500">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi nobis ipsum soluta totam quae reprehenderit,
           in perspiciatis ab officia ullam aspernatur nesciunt dolores nam debitis quasi tenetur sint. Inventore,
           incidunt.

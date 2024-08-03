@@ -1,13 +1,12 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+/* 修复antd和tailwind预设冲突 */
 .anticon svg {
   vertical-align: baseline;
 }
+
 .ant-btn-primary {
   background-color: #1677ff;
 }
+
 .ant-btn-default,
 .ant-btn-dashed {
   background-color: white;

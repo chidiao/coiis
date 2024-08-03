@@ -2,7 +2,7 @@
   <a-layout>
     <Header />
 
-    <a-layout class="pt-16">
+    <a-layout class="pt-16 bg-white">
       <RouterView />
     </a-layout>
   </a-layout>

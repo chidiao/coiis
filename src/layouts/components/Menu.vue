@@ -10,7 +10,13 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { HomeOutlined, StarOutlined, CheckSquareOutlined, DribbbleOutlined } from '@ant-design/icons-vue'
+import {
+  HomeOutlined,
+  StarOutlined,
+  CheckSquareOutlined,
+  DribbbleOutlined,
+  SearchOutlined
+} from '@ant-design/icons-vue'
 
 const menus = [
   {
@@ -32,6 +38,11 @@ const menus = [
     route: '/categories',
     label: 'Categories',
     icon: DribbbleOutlined
+  },
+  {
+    route: '/search',
+    label: 'Search',
+    icon: SearchOutlined
   }
 ]
 const selectedKeys = ref<string[]>([])
