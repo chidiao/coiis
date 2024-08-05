@@ -21,6 +21,8 @@
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "types": ["vite/client"],
 
     /* Linting */
     "strict": true,

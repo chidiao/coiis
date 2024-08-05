@@ -44,6 +44,7 @@
 
       <div class="grid md:grid-cols-3 gap-5 my-5">
         <ApiCard
+          tag="Sports"
           :is-like="i % 2 == 1"
           :icon="`https://picsum.photos/200/300`"
           title="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem quaerat eius earum quisquam sunt cum omnis ipsum cumque, modi non maiores debitis vitae doloremque! Ad natus quaerat minus quibusdam ut."

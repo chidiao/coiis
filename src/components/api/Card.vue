@@ -1,9 +1,9 @@
 <template>
   <div class="group w-full h-44 flex flex-col rounded-lg border p-3 cursor-pointer">
     <div class="w-full h-5 flex justify-between items-center mb-3">
-      <a-tag color="blue">Data</a-tag>
+      <a-tag color="blue">{{ tag }}</a-tag>
 
-      <MyFavorite :isLike="isLike" />
+      <MyFavorite />
     </div>
 
     <div class="w-full flex justify-start items-start">
@@ -26,9 +26,9 @@
         </div>
 
         <div class="flex items-center space-x-2">
-          <TagScore :text="score" />
-          <TagLatency :text="latency + 'ms'" />
-          <TagLevel :text="level + '%'" />
+          <TagScore />
+          <TagLatency />
+          <TagLevel />
         </div>
       </div>
     </div>
@@ -36,21 +36,23 @@
 </template>
 
 <script lang="tsx" setup>
-defineProps<{
+const props = defineProps<{
+  tag?: string
   isLike?: boolean
   icon?: string
   title?: string
   desc?: string
-  score?: string
-  latency?: string
-  level?: string
+  score?: string | number
+  latency?: string | number
+  level?: string | number
 }>()
 
 import { HeartOutlined, HeartFilled } from '@ant-design/icons-vue'
-const MyFavorite = ({ isLike }) => (isLike ? <HeartFilled class="text-red-500" /> : <HeartOutlined />)
-const TagScore = ({ text }) => {
+
+const MyFavorite = () => (props.isLike ? <HeartFilled class="text-red-500" /> : <HeartOutlined />)
+const TagScore = () => {
   return (
-    <div class="border-card-border flex h-6 items-center gap-1.5 rounded border px-1.5">
+    <div class="flex h-6 items-center gap-1.5 rounded border px-1.5">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -62,13 +64,13 @@ const TagScore = ({ text }) => {
       >
         <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
       </svg>
-      <div class="text-secondary false text-xs">{text}</div>
+      <div class="text-xs">{props.score}</div>
     </div>
   )
 }
-const TagLatency = ({ text }) => {
+const TagLatency = () => {
   return (
-    <div class="border-card-border flex h-6 items-center gap-1.5 rounded border px-1.5">
+    <div class="flex h-6 items-center gap-1.5 rounded border px-1.5">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -80,13 +82,13 @@ const TagLatency = ({ text }) => {
       >
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
       </svg>
-      <span class="text-secondary false text-xs">{text}</span>
+      <span class="text-xs">{props.latency}ms</span>
     </div>
   )
 }
-const TagLevel = ({ text }) => {
+const TagLevel = () => {
   return (
-    <div class="border-card-border flex h-6 items-center gap-1.5 rounded border px-1.5">
+    <div class="flex h-6 items-center gap-1.5 rounded border px-1.5">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -102,7 +104,7 @@ const TagLevel = ({ text }) => {
           d="M6 5c7.18 0 13 5.82 13 13M6 11a7 7 0 017 7m-6 0a1 1 0 11-2 0 1 1 0 012 0z"
         ></path>
       </svg>
-      <div class="text-secondary false text-xs">{text}</div>
+      <div class="text-xs">{props.level}%</div>
     </div>
   )
 }
