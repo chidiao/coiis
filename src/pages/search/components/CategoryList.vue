@@ -1,5 +1,5 @@
 <template>
-  <div class="w-64 mr-6 py-8 sticky top-16 z-20" style="height: calc(100vh - 64px)">
+  <div class="w-64 shrink-0 mr-6 py-8 sticky top-16 z-20" style="height: calc(100vh - 64px)">
     <div class="font-bold text-xl">Show APIs</div>
 
     <div class="font-semibold text-lg mt-5">Filter by</div>

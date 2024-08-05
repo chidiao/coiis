@@ -18,9 +18,10 @@
           <div class="text-xl font-bold">All Results (650)</div>
 
           <a-select ref="select" v-model:value="value" class="w-32">
-            <a-select-option value="aaa">aaa</a-select-option>
-            <a-select-option value="bbb">bbb</a-select-option>
-            <a-select-option value="ccc">ccc</a-select-option>
+            <a-select-option value="Alphabetical">Alphabetical</a-select-option>
+            <a-select-option value="Relevance">Relevance</a-select-option>
+            <a-select-option value="Last Updated">Last Updated</a-select-option>
+            <a-select-option value="Trending">Trending</a-select-option>
           </a-select>
         </div>
 
@@ -35,11 +36,16 @@
         </a-input>
 
         <div class="grid gap-6 grid-cols-3">
-          <div
-            class="w-full h-56 rounded-xl"
-            :class="[i % 2 == 1 ? 'bg-blue-400' : 'bg-cyan-400']"
+          <ApiCard
+            :is-like="i % 2 == 1"
+            :icon="`https://picsum.photos/200/300`"
+            title="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem quaerat eius earum quisquam sunt cum omnis ipsum cumque, modi non maiores debitis vitae doloremque! Ad natus quaerat minus quibusdam ut."
+            desc="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem quaerat eius earum quisquam sunt cum omnis ipsum cumque, modi non maiores debitis vitae doloremque! Ad natus quaerat minus quibusdam ut."
+            :score="(i * 2) / 10"
+            :latency="2341"
+            :level="i * 3"
             v-for="i in 30"
-          ></div>
+          />
         </div>
       </div>
     </div>
@@ -49,7 +55,8 @@
 <script setup>
 import { ref } from 'vue'
 import CategoryList from './components/CategoryList.vue'
+import ApiCard from '@/components/api/Card.vue'
 import { SearchOutlined } from '@ant-design/icons-vue'
 
-const value = ref('aaa')
+const value = ref('Alphabetical')
 </script>

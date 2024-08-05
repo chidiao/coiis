@@ -11,10 +11,20 @@
       <a-button type="primary">Explore Analytics</a-button>
     </CommonBanner>
 
-    <div class="font-bold text-xl">My APIs</div>
+    <div class="font-bold text-xl text-blue-500">My APIs</div>
     <div class="text-gray-500 text-sm mt-3">
       This section shows you information regarding APIs that you, your teams or your organizations have created. The
       scope is determined by your context.
+    </div>
+
+    <div class="flex gap-5 py-5 w-full flex-wrap">
+      <ApiStatus title="Total APIs"> 0 </ApiStatus>
+      <ApiStatus title="Total Subscribers"> 0 </ApiStatus>
+      <ApiStatus title="API Calls 24h"> 0 </ApiStatus>
+      <ApiStatus title="Sales 24h"> 0 </ApiStatus>
+      <ApiStatus title="Total APIs"> 0 </ApiStatus>
+      <ApiStatus title="Total APIs"> 0 </ApiStatus>
+      <ApiStatus title="Total APIs"> 0 </ApiStatus>
     </div>
 
     <div class="relative h-44 my-8">
@@ -29,10 +39,16 @@
       <CommonGridBackground />
     </div>
 
-    <div class="font-bold text-xl mt-8">My Subscriptions</div>
+    <div class="font-bold text-xl text-blue-500 mt-8">My Subscriptions</div>
     <div class="text-gray-500 text-sm mt-3">
       This section shows you information regarding APIs that you, your teams or your organizations are subscribed to.
       The scope is determined by your context.
+    </div>
+
+    <div class="flex gap-5 py-5 w-full flex-wrap">
+      <ApiStatus title="Total APIs"> 0 </ApiStatus>
+      <ApiStatus title="Total Subscribers"> 0 </ApiStatus>
+      <ApiStatus title="API Calls 24h"> 0 </ApiStatus>
     </div>
 
     <div class="relative h-44 my-8">
@@ -50,4 +66,5 @@
 <script setup>
 import CommonBanner from '@/components/common/Banner.vue'
 import CommonGridBackground from '@/components/common/GridBackground.vue'
+import ApiStatus from '@/components/api/Status.vue'
 </script>
