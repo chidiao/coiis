@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <div class="w-full flex mt-8 mx-auto">
+    <div class="w-full grid xl:flex mt-8 mx-auto">
       <CategoryList />
 
       <div class="grow rounded-xl border p-8">
@@ -35,7 +35,7 @@
           </template>
         </a-input>
 
-        <div class="grid gap-6 grid-cols-3">
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           <ApiCard
             tag="Data"
             :is-like="i % 2 == 1"

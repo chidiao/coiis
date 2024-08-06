@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-start w-40 rounded-lg border shadow-sm p-3">
+  <div class="flex flex-col items-start w-36 md:w-40 rounded-lg border shadow-sm p-3">
     <div class="w-full flex justify-between items-center">
       <div>{{ title }}</div>
 

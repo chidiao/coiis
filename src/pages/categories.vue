@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto p-5">
-    <div class="flex justify-between items-center">
-      <div class="w-1/2">
+    <div class="flex flex-col justify-between items-start xl:flex-row xl:items-center">
+      <div class="w-full xl:w-1/2">
         <div class="font-bold text-xl">API Categories</div>
         <div class="text-sm text-gray-500 mt-2">
           Embark on a journey through our extensive array of categories, where you'll find a treasure trove of
@@ -9,7 +9,7 @@
         </div>
       </div>
 
-      <a-input placeholder="search" class="max-w-64">
+      <a-input placeholder="search" class="max-w-64 mt-5 xl:mt-auto">
         <template #prefix>
           <SearchOutlined />
         </template>
