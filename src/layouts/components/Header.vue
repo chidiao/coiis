@@ -1,7 +1,7 @@
 <template>
   <a-layout-header class="fixed w-full z-50 border-b border-solid border-gray-200">
     <div class="size-full flex justify-between items-center">
-      <Logo class="w-16 shrink-0" @click="showLeft = true" />
+      <Logo class="w-16 shrink-0 cursor-pointer" @click="showLeft = true" />
 
       <DrawerMenu v-model="showLeft" />
 
@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts" setup>
-import Logo from '@/assets/svg/coiis-logo.svg'
+import Logo from '@/assets/svg/logo.svg'
 import { MenuOutlined } from '@ant-design/icons-vue'
 import DrawerMenu from './DrawerMenu.vue'
 import { ref } from 'vue'
