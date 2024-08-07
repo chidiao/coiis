@@ -1,8 +1,8 @@
 <template>
   <div
-    class="w-full h-8 p-1 flex justify-between items-center rounded cursor-pointer hover:bg-gray-100"
+    class="w-full h-8 p-1 flex justify-between items-center rounded cursor-pointer hover:bg-gray-200 dark:hover:bg-[#3f3f46]"
     :class="{
-      'bg-gray-200': isActive
+      'bg-gray-200 dark:bg-[#3f3f46]': isActive
     }"
   >
     <div class="text-xs">Sports</div>

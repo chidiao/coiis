@@ -1,5 +1,10 @@
 <template>
-  <a-config-provider :theme>
+  <a-config-provider
+    :theme="{
+      fontSize: 12,
+      algorithm: darkMode ? theme.darkAlgorithm : theme.defaultAlgorithm
+    }"
+  >
     <div class="font-sans">
       <RouterView />
     </div>
@@ -7,10 +12,20 @@
 </template>
 
 <script setup>
-import DefaultLayout from '@/layouts/Default.vue'
-const theme = {
-  token: {
-    fontSize: 12
-  }
-}
+import { watch } from 'vue'
+import { theme } from 'ant-design-vue'
+import { useStorage } from '@vueuse/core'
+
+const darkMode = useStorage('darkMode', false)
+watch(
+  darkMode,
+  (val) => {
+    if (val) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  },
+  { immediate: true }
+)
 </script>

@@ -1,11 +1,11 @@
 <template>
-  <div class="grid gap-8 xl:grid-cols-2 justify-items-center my-8 bg-[#fafafa] rounded-xl p-5">
+  <div class="grid gap-8 xl:grid-cols-2 justify-items-center my-8 bg-[#fafafa] dark:bg-[#262626] rounded-xl p-5">
     <div class="flex flex-col">
-      <div class="line-clamp-2 text-xl font-semibold leading-7">
+      <div class="line-clamp-2 text-xl font-semibold leading-7 dark:text-white">
         {{ title }}
       </div>
 
-      <div class="line-clamp-4 text-sm font-normal leading-tight text-gray-500 mt-4">
+      <div class="line-clamp-4 text-sm font-normal leading-tight text-gray-400 mt-4">
         {{ subTitle }}
       </div>
 

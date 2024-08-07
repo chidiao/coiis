@@ -1,8 +1,6 @@
 <template>
   <a-drawer width="300" placement="left" :open="open" @close="open = false">
-    <div class="drawer">
-      <Menu />
-    </div>
+    <Menu />
   </a-drawer>
 </template>
 
@@ -22,9 +20,3 @@ watch(
   { immediate: true }
 )
 </script>
-
-<style scoped>
-.drawer :deep(.ant-menu) {
-  border-inline-end: none !important;
-}
-</style>

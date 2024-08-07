@@ -2,8 +2,8 @@
   <div class="container mx-auto p-5">
     <div class="flex flex-col justify-between items-start xl:flex-row xl:items-center">
       <div class="w-full xl:w-1/2">
-        <div class="font-bold text-xl">API Categories</div>
-        <div class="text-sm text-gray-500 mt-2">
+        <div class="font-bold text-xl dark:text-white">API Categories</div>
+        <div class="text-sm text-gray-400 mt-2">
           Embark on a journey through our extensive array of categories, where you'll find a treasure trove of
           exceptional APIs, just waiting to be discovered and utilized for your specific needs.
         </div>

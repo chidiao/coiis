@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full p-3 border border-solid border-gray-200 rounded-lg group transition cursor-pointer bg-white hover:bg-gray-100"
+    class="w-full p-3 border border-solid border-gray-200 dark:border-gray-700 rounded-lg group transition cursor-pointer bg-transparent hover:bg-gray-100 dark:hover:bg-gray-700"
   >
     <div>
       <img
@@ -9,8 +9,8 @@
       />
 
       <div class="w-full h-20">
-        <div class="text-base line-clamp-2 mt-3">sports</div>
-        <div class="text-xs line-clamp-2 mt-2 text-gray-500">
+        <div class="text-base line-clamp-2 mt-3 dark:text-white">sports</div>
+        <div class="text-xs line-clamp-2 mt-2 text-gray-400">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi nobis ipsum soluta totam quae reprehenderit,
           in perspiciatis ab officia ullam aspernatur nesciunt dolores nam debitis quasi tenetur sint. Inventore,
           incidunt.

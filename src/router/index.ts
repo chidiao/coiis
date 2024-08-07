@@ -6,13 +6,17 @@ const routes = [
     component: () => import('@/pages/test.vue')
   },
   {
+    path: '/login',
+    component: () => import('@/pages/account/login.vue')
+  },
+  {
     path: '/search',
-    component: () => import('@/layouts/FixHeader.vue'),
+    component: () => import('@/layouts/FixedHeader.vue'),
     children: [{ path: '/search', component: () => import('@/pages/search/index.vue') }]
   },
   {
     path: '/',
-    component: () => import('@/layouts/Default.vue'),
+    component: () => import('@/layouts/FixedMenu.vue'),
     children: [
       { path: '/', component: () => import('@/pages/home/index.vue') },
       { path: '/collections', component: () => import('@/pages/collections.vue') },

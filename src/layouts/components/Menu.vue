@@ -1,5 +1,10 @@
 <template>
-  <a-menu mode="inline" class="size-full" v-model:selectedKeys="selectedKeys">
+  <a-menu
+    mode="inline"
+    class="size-full bg-transparent"
+    style="border-inline-end: none"
+    v-model:selectedKeys="selectedKeys"
+  >
     <a-menu-item v-for="i in menus" :key="i.route" @click="router.push(i.route)">
       <component :is="i.icon" />
       <span>{{ i.label }}</span>

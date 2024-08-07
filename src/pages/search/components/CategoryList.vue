@@ -11,7 +11,7 @@
       <CategoryItem v-for="i in 24" :count="666" />
     </div>
 
-    <div class="h-4 border-b border-gray-100"></div>
+    <div class="h-4 border-b border-gray-100 dark:border-gray-700"></div>
   </div>
 </template>
 

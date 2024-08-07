@@ -1,5 +1,5 @@
 {
-  "name": "vapid",
+  "name": "coiis",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/core": "^10.11.0",
     "ant-design-vue": "^4.2.3",
     "vue": "^3.4.31",
     "vue-router": "4"

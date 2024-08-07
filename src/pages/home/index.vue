@@ -13,7 +13,7 @@
 
     <div class="w-full mt-16">
       <div class="flex justify-between items-center">
-        <div class="font-bold text-xl">Top Categories</div>
+        <div class="font-bold text-xl dark:text-white">Top Categories</div>
 
         <router-link to="/categories" class="text-blue-500 text-xs underline">View All Categories</router-link>
       </div>
@@ -25,7 +25,7 @@
 
     <div class="w-full mt-16">
       <div class="flex justify-between items-center">
-        <div class="font-bold text-xl">Top Collections</div>
+        <div class="font-bold text-xl dark:text-white">Top Collections</div>
 
         <router-link to="/collections" class="text-blue-500 text-xs underline">View All Collections</router-link>
       </div>
@@ -37,7 +37,7 @@
 
     <div class="w-full mt-16">
       <div class="flex justify-between items-center">
-        <div class="font-bold text-xl">Trending APIs</div>
+        <div class="font-bold text-xl dark:text-white">Trending APIs</div>
 
         <router-link to="/search" class="text-blue-500 text-xs underline">View All Trending APIs</router-link>
       </div>

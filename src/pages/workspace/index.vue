@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="font-bold text-xl">Workspace</div>
+    <div class="font-bold text-xl dark:text-white">Workspace</div>
 
     <CommonBanner
       title="Exciting news! You can now explore the new analytics dashboard"
@@ -12,7 +12,7 @@
     </CommonBanner>
 
     <div class="font-bold text-xl text-blue-500">My APIs</div>
-    <div class="text-gray-500 text-sm mt-3">
+    <div class="text-gray-400 text-sm mt-3">
       This section shows you information regarding APIs that you, your teams or your organizations have created. The
       scope is determined by your context.
     </div>
@@ -29,8 +29,8 @@
 
     <div class="relative h-44 my-8">
       <div class="absolute z-10 flex h-full w-full flex-col items-center justify-center gap-2">
-        <div>There are no APIs that you manage</div>
-        <div class="text-gray-500">
+        <div class="dark:text-white">There are no APIs that you manage</div>
+        <div class="text-gray-400">
           Consider creating an API on our platform to share it with everyone or keep it private
         </div>
         <a-button type="primary" class="mt-8">Create new Project</a-button>
@@ -40,7 +40,7 @@
     </div>
 
     <div class="font-bold text-xl text-blue-500 mt-8">My Subscriptions</div>
-    <div class="text-gray-500 text-sm mt-3">
+    <div class="text-gray-400 text-sm mt-3">
       This section shows you information regarding APIs that you, your teams or your organizations are subscribed to.
       The scope is determined by your context.
     </div>
@@ -53,8 +53,8 @@
 
     <div class="relative h-44 my-8">
       <div class="absolute z-10 flex h-full w-full flex-col items-center justify-center gap-2">
-        <div>There are no APIs that you subscribed to</div>
-        <div class="text-gray-500">Explore now</div>
+        <div class="dark:text-white">There are no APIs that you subscribed to</div>
+        <div class="text-gray-400">Explore now</div>
         <a-button type="primary" class="mt-8">Find your next API</a-button>
       </div>
 
