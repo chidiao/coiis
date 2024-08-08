@@ -10,8 +10,8 @@
 
         <div class="hidden xl:flex items-center space-x-3">
           <a-button type="text">Add Your Api</a-button>
-          <a-button type="primary">Sign In</a-button>
-          <a-button>Sign Up</a-button>
+          <a-button type="primary" href="/account/login">Sign In</a-button>
+          <a-button href="/account/signup">Sign Up</a-button>
         </div>
 
         <MenuOutlined class="xl:hidden" @click="showRight = true" />
@@ -19,8 +19,8 @@
         <a-drawer width="300" placement="right" :open="showRight" @close="showRight = false">
           <div class="flex flex-col space-y-3">
             <a-button block type="text">Add Your Api</a-button>
-            <a-button block type="primary">Sign In</a-button>
-            <a-button block>Sign Up</a-button>
+            <a-button block type="primary" href="/account/login">Sign In</a-button>
+            <a-button block href="/account/signup">Sign Up</a-button>
           </div>
         </a-drawer>
       </div>

@@ -7,7 +7,6 @@
       <RouterView />
     </div>
   </div>
-  <a-layout> </a-layout>
 </template>
 
 <script setup>

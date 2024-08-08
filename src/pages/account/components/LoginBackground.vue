@@ -1,9 +1,25 @@
 <template>
-  <div class="h-screen flex items-center justify-center overlay">
-    <div class="gradient"></div>
-    <slot></slot>
+  <div class="dark:bg-gray-950">
+    <div class="h-screen flex items-center justify-center overlay">
+      <div class="gradient"></div>
+
+      <!-- form -->
+      <div
+        class="rounded-xl divide-y divide-gray-200 dark:divide-gray-800 ring-1 ring-gray-200 dark:ring-gray-800 shadow max-w-sm w-full bg-white/75 dark:bg-white/5 backdrop-blur"
+      >
+        <div class="px-4 py-5 sm:p-6">
+          <slot></slot>
+
+          <LoginMore />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
+
+<script setup>
+import LoginMore from './LoginMore.vue'
+</script>
 
 <style lang="scss" scoped>
 .overlay {

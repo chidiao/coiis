@@ -1,14 +1,8 @@
 import { createWebHistory, createRouter } from 'vue-router'
+import account from './account'
 
 const routes = [
-  {
-    path: '/test',
-    component: () => import('@/pages/test.vue')
-  },
-  {
-    path: '/login',
-    component: () => import('@/pages/account/login.vue')
-  },
+  ...account,
   {
     path: '/search',
     component: () => import('@/layouts/FixedHeader.vue'),
