@@ -5,7 +5,7 @@
       algorithm: darkMode ? theme.darkAlgorithm : theme.defaultAlgorithm
     }"
   >
-    <div class="font-sans">
+    <div class="font-sans dark:text-white">
       <RouterView />
     </div>
   </a-config-provider>

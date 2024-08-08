@@ -1,21 +1,15 @@
 <template>
-  <a-layout>
-    <Header />
+  <div class="w-full">
+    <FixedHeader />
 
-    <a-layout class="pt-16 bg-white">
+    <div class="bg-white">
+      <div class="h-16"></div>
       <RouterView />
-    </a-layout>
-  </a-layout>
+    </div>
+  </div>
+  <a-layout> </a-layout>
 </template>
 
 <script setup>
-import Header from './components/FixedHeader.vue'
+import FixedHeader from './components/FixedHeader.vue'
 </script>
-
-<style scoped>
-.ant-layout-header,
-.ant-layout-sider {
-  background: #fff;
-  position: fixed;
-}
-</style>

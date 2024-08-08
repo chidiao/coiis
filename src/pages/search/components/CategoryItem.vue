@@ -5,7 +5,7 @@
       'bg-gray-200 dark:bg-[#3f3f46]': isActive
     }"
   >
-    <div class="text-xs">Sports</div>
+    <div class="text-xs dark:text-white">Sports</div>
 
     <div
       class="text-xs px-[6px] py-[2px] rounded"

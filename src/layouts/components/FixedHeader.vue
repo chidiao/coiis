@@ -12,7 +12,6 @@
           <a-button type="text">Add Your Api</a-button>
           <a-button type="primary">Sign In</a-button>
           <a-button>Sign Up</a-button>
-          <a-button @click="darkMode = !darkMode">toggle</a-button>
         </div>
 
         <MenuOutlined class="xl:hidden" @click="showRight = true" />
@@ -29,14 +28,19 @@
   </header>
 </template>
 
-<script lang="ts" setup>
-import Logo from '@/assets/svg/logo.svg'
+<script lang="tsx" setup>
+import LogoLight from '@/assets/svg/logo.svg'
+import LogoDark from '@/assets/svg/logo-dark.svg'
 import { MenuOutlined } from '@ant-design/icons-vue'
 import DrawerMenu from './DrawerMenu.vue'
 import { ref } from 'vue'
 import { useStorage } from '@vueuse/core'
 
 const darkMode = useStorage('darkMode', false)
+
+const Logo = () => {
+  return darkMode.value ? <LogoDark /> : <LogoLight />
+}
 
 const showLeft = ref<boolean>(false)
 const showRight = ref<boolean>(false)

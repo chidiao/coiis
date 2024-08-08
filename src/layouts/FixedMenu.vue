@@ -12,7 +12,7 @@
       <div class="flex justify-between bg-white dark:bg-[#212121]">
         <div class="w-[240px] shrink-0 hidden xl:block"></div>
 
-        <div class="p-5">
+        <div class="grow p-5 xl:px-8">
           <div class="h-16"></div>
           <RouterView />
         </div>
