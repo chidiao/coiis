@@ -13,7 +13,7 @@
     </a-menu>
 
     <div class="p-3">
-      <div class="border-y dark:border-gray-700 py-3">
+      <div class="border-y dark:border-gray-700 dark:text-white py-3">
         <div
           class="w-full flex justify-between items-center text-xs hover:bg-sky-200/20 p-2 rounded transition duration-300 cursor-pointer"
         >
