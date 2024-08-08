@@ -35,9 +35,9 @@ import LoginButton from './components/LoginButton.vue'
 import { ref } from 'vue'
 
 const form = ref<{
-  name: string
-  email: string
-  password: string
+  name?: string
+  email?: string
+  password?: string
 }>({})
 </script>
 

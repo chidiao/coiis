@@ -41,8 +41,8 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const form = ref<{
-  email: string
-  password: string
+  email?: string
+  password?: string
 }>({})
 
 const router = useRouter()
