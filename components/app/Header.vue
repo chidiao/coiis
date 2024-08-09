@@ -32,13 +32,11 @@
 import LogoLight from '@/assets/svg/logo.svg'
 import LogoDark from '@/assets/svg/logo-dark.svg'
 import { MenuOutlined } from '@ant-design/icons-vue'
-import { ref } from 'vue'
-import { useStorage } from '@vueuse/core'
 
-const darkMode = useStorage('darkMode', false)
+const colorMode = useColorMode()
 
 const Logo = () => {
-  return darkMode.value ? <LogoDark /> : <LogoLight />
+  return colorMode.value == 'dark' ? <LogoDark /> : <LogoLight />
 }
 
 const showLeft = ref<boolean>(false)
