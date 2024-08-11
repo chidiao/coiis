@@ -11,38 +11,18 @@
 
     <HomeGrids class="mt-5" />
 
-    <div class="w-full mt-16">
-      <div class="flex justify-between items-center">
-        <div class="font-bold text-xl dark:text-white">Top Categories</div>
+    <HomeSection title="Top Categories" more="View All Categories" to="/app/category">
+      <HomeTopCategories :list="categoryList" />
+    </HomeSection>
 
-        <router-link to="/categories" class="text-blue-500 text-xs underline">View All Categories</router-link>
-      </div>
-
-      <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-5 my-5">
-        <Categorie v-for="i in 4" :key="i" />
-      </div>
-    </div>
-
-    <div class="w-full mt-16">
-      <div class="flex justify-between items-center">
-        <div class="font-bold text-xl dark:text-white">Top Collections</div>
-
-        <router-link to="/collections" class="text-blue-500 text-xs underline">View All Collections</router-link>
-      </div>
-
-      <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-5 my-5">
+    <HomeSection title="Top Collections" more="View All Collections" to="/collections">
+      <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-5">
         <Collection v-for="i in 4" :value="i" />
       </div>
-    </div>
+    </HomeSection>
 
-    <div class="w-full mt-16">
-      <div class="flex justify-between items-center">
-        <div class="font-bold text-xl dark:text-white">Trending APIs</div>
-
-        <router-link to="/search" class="text-blue-500 text-xs underline">View All Trending APIs</router-link>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-5 my-5">
+    <HomeSection title="Trending APIs" more="View All Trending APIs" to="/search">
+      <div class="grid md:grid-cols-3 gap-5">
         <ApiCard
           tag="Sports"
           :is-like="i % 2 == 1"
@@ -55,6 +35,15 @@
           v-for="i in 6"
         />
       </div>
-    </div>
+    </HomeSection>
   </div>
 </template>
+
+<script setup>
+const { applicationApi } = useApi()
+const { data: categoryList, categoryStatus } = useAsyncData('getCategoryList', async () => {
+  const { data } = await applicationApi.getCategoryList()
+
+  return data.slice(0, 8)
+})
+</script>

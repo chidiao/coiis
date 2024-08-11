@@ -14,7 +14,9 @@
 
         <div class="grow p-5 xl:px-8">
           <div class="h-16"></div>
-          <slot></slot>
+          <div class="max-w-5xl mx-auto">
+            <slot></slot>
+          </div>
         </div>
       </div>
     </div>

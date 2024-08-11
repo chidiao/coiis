@@ -8,7 +8,7 @@
         algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm
       }"
     >
-      <div class="font-sans dark:text-white">
+      <div class="font-sans">
         <NuxtLayout>
           <NuxtPage />
         </NuxtLayout>

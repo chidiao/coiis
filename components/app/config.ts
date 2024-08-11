@@ -23,7 +23,7 @@ export const menu = [
     icon: CheckSquareOutlined
   },
   {
-    route: '/categories',
+    route: '/app/category',
     label: 'Categories',
     icon: DribbbleOutlined
   },

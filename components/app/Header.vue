@@ -9,18 +9,16 @@
         <AppDrawerMenu v-model="showLeft" />
 
         <div class="hidden xl:flex items-center space-x-3">
-          <a-button type="text">Add Your Api</a-button>
-          <a-button type="primary" href="/account/login">Sign In</a-button>
-          <a-button href="/account/signup">Sign Up</a-button>
+          <UButton to="/account/login">Sign In</UButton>
+          <UButton color="white" to="/account/signup">Sign Up</UButton>
         </div>
 
         <MenuOutlined class="xl:hidden" @click="showRight = true" />
 
         <a-drawer width="300" placement="right" :open="showRight" @close="showRight = false">
           <div class="flex flex-col space-y-3">
-            <a-button block type="text">Add Your Api</a-button>
-            <a-button block type="primary" href="/account/login">Sign In</a-button>
-            <a-button block href="/account/signup">Sign Up</a-button>
+            <UButton block to="/account/login">Sign In</UButton>
+            <UButton color="white" block to="/account/signup">Sign Up</UButton>
           </div>
         </a-drawer>
       </div>
