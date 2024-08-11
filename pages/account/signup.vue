@@ -9,21 +9,30 @@
         </div>
       </div>
 
-      <a-form layout="vertical" class="py-8">
-        <a-form-item label="Name">
-          <a-input v-model:value="form.name" placeholder="Enter your name" />
-        </a-form-item>
+      <UForm :schema="schema" :state="state" class="space-y-5 py-8" @submit="onSubmit">
+        <UFormGroup label="Email" name="email">
+          <UInput v-model="state.email" placeholder="Enter your email" />
+        </UFormGroup>
 
-        <a-form-item label="Email">
-          <a-input v-model:value="form.email" placeholder="Enter your email" />
-        </a-form-item>
+        <UFormGroup label="Verification code" name="verification_code">
+          <div class="flex justify-between items-center space-x-4">
+            <UInput class="w-2/3" v-model="state.verification_code" placeholder="Enter your verification code" />
+            <UButton class="w-1/3 justify-center" @click="sendCode">
+              {{ countDown.countStr }}
+            </UButton>
+          </div>
+        </UFormGroup>
 
-        <a-form-item label="Password">
-          <a-input v-model:value="form.password" placeholder="Enter your password" />
-        </a-form-item>
+        <UFormGroup label="Password" name="password">
+          <UInput v-model="state.password" type="password" placeholder="Enter your password" />
+        </UFormGroup>
 
-        <LoginButton>Create account</LoginButton>
-      </a-form>
+        <UFormGroup label="Pkey" name="pkey">
+          <UInput v-model="state.pkey" placeholder="Enter your pkey" readonly />
+        </UFormGroup>
+
+        <UButton class="rounded-full" size="md" type="submit" block :loading="loading">Create account</UButton>
+      </UForm>
     </div>
   </LoginBackground>
 </template>
@@ -32,11 +41,47 @@
 definePageMeta({
   layout: 'empty'
 })
-const form = ref<{
-  name?: string
-  email?: string
-  password?: string
-}>({})
+
+import { z } from 'zod'
+
+const { userApi } = useApi()
+
+const schema = z.object({
+  email: z.string().email('Invalid email'),
+  password: z.string().min(8, 'Must be at least 8 characters'),
+  verification_code: z.string().min(6, 'Invalid code'),
+  pkey: z.string()
+})
+
+const state = ref({
+  email: '',
+  password: '',
+  verification_code: '',
+  pkey: ''
+})
+
+const countDown = useCountDown()
+const sendCode = async () => {
+  if (!state.value.email) return
+  if (countDown.counting.value) return
+
+  countDown.start()
+  const { data } = await userApi.sendCode(state.value.email)
+
+  if (data.pkey) {
+    state.value.pkey = data.pkey
+  } else {
+    countDown.end()
+  }
+}
+
+const loading = ref(false)
+const onSubmit = async ({ data: params }) => {
+  loading.value = true
+  const { data, message } = await userApi.register(params)
+  loading.value = false
+  console.log(data)
+}
 </script>
 
 <style lang="scss" scoped>

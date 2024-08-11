@@ -11,24 +11,17 @@
         </div>
       </div>
 
-      <a-form layout="vertical" class="py-8">
-        <a-form-item label="Email">
-          <a-input v-model:value="form.email" placeholder="Enter your email" />
-        </a-form-item>
+      <UForm :schema="schema" :state="state" class="space-y-5 py-8" @submit="login">
+        <UFormGroup label="Email" name="email">
+          <UInput v-model="state.email" placeholder="Enter your email" />
+        </UFormGroup>
 
-        <a-form-item>
-          <template #label>
-            <div class="w-full flex justify-between items-center">
-              <div>Password</div>
-              <RouterLink to="/account/forget" class="text-sky-500 font-medium">Forgot password?</RouterLink>
-            </div>
-          </template>
+        <UFormGroup label="Password" name="password">
+          <UInput v-model="state.password" type="password" placeholder="Enter your password" />
+        </UFormGroup>
 
-          <a-input v-model:value="form.password" placeholder="Enter your password" />
-        </a-form-item>
-
-        <LoginButton @click="router.replace('/')">Continue</LoginButton>
-      </a-form>
+        <UButton class="rounded-full" size="md" type="submit" block :loading="loading">Continue</UButton>
+      </UForm>
     </div>
   </LoginBackground>
 </template>
@@ -37,14 +30,34 @@
 definePageMeta({
   layout: 'empty'
 })
-import LockButton from '@/assets/svg/lock.svg'
 
-const form = ref<{
-  email?: string
-  password?: string
-}>({})
+import LockButton from '@/assets/svg/lock.svg'
+import { z } from 'zod'
+import type { LoginParams } from '@/types/user'
 
 const router = useRouter()
+const { userApi } = useApi()
+
+const schema = z.object({
+  email: z.string().email('Invalid email'),
+  password: z.string().min(8, 'Must be at least 8 characters')
+})
+
+const state = ref<LoginParams>({
+  email: '',
+  password: ''
+})
+
+const userStore = useUserStore()
+
+const loading = ref(false)
+const login = async () => {
+  loading.value = true
+  const { data } = await userApi.login(state.value)
+  loading.value = false
+  userStore.setUserInfo(data)
+  router.replace('/')
+}
 </script>
 
 <style lang="scss" scoped>

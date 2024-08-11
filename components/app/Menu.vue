@@ -1,5 +1,5 @@
 <template>
-  <div class="size-full">
+  <div class="w-full">
     <a-menu
       mode="inline"
       class="w-full bg-transparent"

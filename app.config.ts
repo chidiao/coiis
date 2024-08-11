@@ -2,6 +2,9 @@ export default defineAppConfig({
   ui: {
     primary: 'blue',
     gray: 'slate',
+    notifications: {
+      position: 'top-0 right-0'
+    },
     button: {
       size: {
         xs: 'text-[10px]',
@@ -12,7 +15,8 @@ export default defineAppConfig({
         sm: 'px-4 py-2'
       },
       default: {
-        size: 'xs'
+        size: 'xs',
+        loadingIcon: 'i-ant-design:loading-outlined'
       }
     }
   }

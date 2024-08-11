@@ -1,20 +1,18 @@
 <template>
-  <a-extract-style>
-    <a-config-provider
-      :theme="{
-        token: {
-          fontSize: 12
-        },
-        algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm
-      }"
-    >
-      <div class="font-sans">
-        <NuxtLayout>
-          <NuxtPage />
-        </NuxtLayout>
-      </div>
-    </a-config-provider>
-  </a-extract-style>
+  <a-config-provider
+    :theme="{
+      token: {
+        fontSize: 12
+      },
+      algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm
+    }"
+  >
+    <div class="font-sans">
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </div>
+  </a-config-provider>
 </template>
 
 <script setup lang="ts">
