@@ -5,10 +5,10 @@
       'bg-gray-200 dark:bg-[#3f3f46]': isActive
     }"
   >
-    <div class="text-xs dark:text-white">Sports</div>
+    <div class="text-xs dark:text-white truncate mr-5">{{ category }}</div>
 
     <div
-      class="text-xs px-[6px] py-[2px] rounded"
+      class="text-xs px-[6px] py-[2px] rounded transition"
       :class="[isActive ? 'bg-[#3b82f6] text-white' : 'bg-[#f3f4f6] text-black']"
     >
       {{ count }}

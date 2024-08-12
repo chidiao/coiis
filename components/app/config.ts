@@ -8,17 +8,17 @@ import {
 
 export const menu = [
   {
-    route: '/',
+    route: '/app',
     label: 'Home',
     icon: HomeOutlined
   },
   {
-    route: '/workspace',
+    route: '/app/workspace',
     label: 'Workspace',
     icon: StarOutlined
   },
   {
-    route: '/collections',
+    route: '/app/collections',
     label: 'Collections',
     icon: CheckSquareOutlined
   },

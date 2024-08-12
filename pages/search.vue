@@ -11,7 +11,7 @@
     </div>
 
     <div class="w-full grid xl:flex mt-8 mx-auto">
-      <SearchCategoryList />
+      <SearchCategoryList v-model="category" />
 
       <div class="grow rounded-xl border dark:border-gray-700 p-8">
         <div class="flex justify-between items-center">
@@ -37,7 +37,7 @@
 
         <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           <ApiCard
-            tag="Data"
+            :tag="category?.category_name ?? 'Data'"
             :is-like="i % 2 == 1"
             :icon="`https://picsum.photos/200/300`"
             title="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem quaerat eius earum quisquam sunt cum omnis ipsum cumque, modi non maiores debitis vitae doloremque! Ad natus quaerat minus quibusdam ut."
@@ -60,4 +60,8 @@ definePageMeta({
 import { SearchOutlined } from '@ant-design/icons-vue'
 
 const value = ref('Alphabetical')
+
+const category = ref({
+  id: 100016469422112
+})
 </script>

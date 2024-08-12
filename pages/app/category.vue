@@ -20,7 +20,7 @@
       <AppLoading v-if="status == 'pending'" />
 
       <div class="py-5 xl:py-8" v-else>
-        <HomeTopCategories :list="list" />
+        <TopCategories :list="list" />
       </div>
     </div>
   </div>
