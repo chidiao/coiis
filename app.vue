@@ -11,6 +11,8 @@
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
+
+      <UNotifications />
     </div>
   </a-config-provider>
 </template>

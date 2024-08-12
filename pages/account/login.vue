@@ -20,7 +20,11 @@
           <UInput v-model="state.password" type="password" placeholder="Enter your password" />
         </UFormGroup>
 
-        <UButton class="rounded-full" size="md" type="submit" block :loading="loading">Continue</UButton>
+        <div class="flex flex-col space-y-2 pt-5">
+          <UButton class="rounded-full" size="md" type="submit" block :loading="loading">Continue</UButton>
+
+          <UButton class="rounded-full" variant="link" size="sm" block to="/account/forget">Forget password</UButton>
+        </div>
       </UForm>
     </div>
   </LoginBackground>
@@ -59,7 +63,3 @@ const login = async () => {
   router.replace('/')
 }
 </script>
-
-<style lang="scss" scoped>
-@import url('./style.scss');
-</style>

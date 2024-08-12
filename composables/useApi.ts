@@ -6,9 +6,12 @@ export const useApi = () => {
 
   return {
     userApi: {
-      sendCode: (email: string) => $http.post('/yac-user/v1/user/verification-code/send', { email }),
-      sendCodeResetPassword: (email: string) => $http.post('/yac-user/v1/user/password-reset/email', { email }),
+      sendCode: (email: string) => $http.post<{ pkey: string }>('/yac-user/v1/user/verification-code/send', { email }),
+      sendCodeResetPassword: (email: string) =>
+        $http.post<{ pkey: string }>('/yac-user/v1/user/password-reset/email', { email }),
       register: (params: RegisterParams) => $http.post<RegisterData>('/yac-user/v1/user/register', params),
+      resetPassword: (params: RegisterParams) => $http.post<RegisterData>('/yac-user/v1/user/password/reset', params),
+      editPassword: (params: any) => $http.put('/yac-user/v1/user/password', params),
       login: (params: LoginParams) => $http.post<LoginData>('/yac-user/v1/user/login', params)
     },
     applicationApi: {

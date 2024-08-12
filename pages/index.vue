@@ -6,7 +6,7 @@
           repudiandae et, iure quas ut voluptas! Tempora quod similique id vel, blanditiis repellat est numquam!"
       img="https://rapidapi.com/hub/_next/image?url=%2Fhub%2Fimages%2Fdiscovery-hero2.png&w=1080&q=75"
     >
-      <a-button type="primary">Explore Blog</a-button>
+      <a-button type="primary" @click="toast.add({ title: 'hello' })">Explore Blog</a-button>
     </CommonBanner>
 
     <HomeGrids class="mt-5" />
@@ -46,4 +46,6 @@ const { data: categoryList, categoryStatus } = useAsyncData('getCategoryList', a
 
   return data.slice(0, 8)
 })
+
+const toast = useToast()
 </script>

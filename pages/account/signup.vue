@@ -31,7 +31,9 @@
           <UInput v-model="state.pkey" placeholder="Enter your pkey" readonly />
         </UFormGroup>
 
-        <UButton class="rounded-full" size="md" type="submit" block :loading="loading">Create account</UButton>
+        <div class="pt-5">
+          <UButton class="rounded-full" size="md" type="submit" block :loading="loading">Create account</UButton>
+        </div>
       </UForm>
     </div>
   </LoginBackground>
@@ -68,22 +70,21 @@ const sendCode = async () => {
   countDown.start()
   const { data } = await userApi.sendCode(state.value.email)
 
-  if (data.pkey) {
+  if (data?.pkey) {
     state.value.pkey = data.pkey
   } else {
     countDown.end()
   }
 }
 
+const toast = useToast()
+const router = useRouter()
 const loading = ref(false)
-const onSubmit = async ({ data: params }) => {
+const onSubmit = async () => {
   loading.value = true
-  const { data, message } = await userApi.register(params)
+  const { message } = await userApi.resetPassword(state.value)
   loading.value = false
-  console.log(data)
+  toast.add({ title: message })
+  router.replace('/account/login')
 }
 </script>
-
-<style lang="scss" scoped>
-@import url('./style.scss');
-</style>
