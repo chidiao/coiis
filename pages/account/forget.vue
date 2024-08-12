@@ -2,7 +2,7 @@
   <LoginBackground>
     <div>
       <div class="text-center">
-        <div class="text-2xl text-gray-900 dark:text-white font-bold">Create an account</div>
+        <div class="text-2xl text-gray-900 dark:text-white font-bold">Forget password</div>
         <div class="text-gray-500 dark:text-gray-400 mt-1">
           Already have an account?
           <RouterLink to="/account/login" class="text-sky-500 font-medium">Login</RouterLink>.

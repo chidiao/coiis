@@ -19,7 +19,6 @@
 <script lang="tsx" setup>
 import LogoLight from '@/assets/svg/logo.svg'
 import LogoDark from '@/assets/svg/logo-dark.svg'
-import { MenuOutlined } from '@ant-design/icons-vue'
 
 const colorMode = useColorMode()
 

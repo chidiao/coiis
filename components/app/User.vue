@@ -15,12 +15,16 @@ const items = [
       avatar: {
         alt: userStore.userInfo?.email ?? '...'
       }
+    },
+    {
+      label: 'Settings',
+      icon: 'i-feather-settings'
     }
   ],
   [
     {
       label: 'Logout',
-      icon: 'i-heroicons-arrow-right-end-on-rectangle',
+      icon: 'i-feather-log-out',
       click: () => {
         userStore.logout()
       }

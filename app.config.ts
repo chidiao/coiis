@@ -19,7 +19,17 @@ export default defineAppConfig({
       },
       default: {
         size: 'xs',
-        loadingIcon: 'i-ant-design:loading-outlined'
+        loadingIcon: 'i-feather-loader'
+      }
+    },
+    dropdown: {
+      item: {
+        base: 'gap-2',
+        padding: 'p-2',
+        size: 'text-xs',
+        icon: {
+          base: 'size-4'
+        }
       }
     },
     notifications: {
