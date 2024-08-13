@@ -15,5 +15,9 @@ export default defineNuxtConfig({
     head: {
       link: [{ rel: 'stylesheet', href: 'https://rsms.me/inter/inter.css' }]
     }
+  },
+  routeRules: {
+    '/app': { prerender: true },
+    '/app/category': { ssr: true }
   }
 })
