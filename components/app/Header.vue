@@ -4,7 +4,8 @@
   >
     <div class="container h-full mx-auto px-5 xl:px-0">
       <div class="size-full flex justify-between items-center">
-        <Logo class="w-16 shrink-0 cursor-pointer" @click="router.push('/app')" />
+        <AppLogo class="w-16 shrink-0 cursor-pointer xl:hidden" @click="showSlideMenu = !showSlideMenu" />
+        <AppLogo class="w-16 shrink-0 cursor-pointer hidden xl:flex" @click="router.push('/app')" />
 
         <div class="flex items-center space-x-3">
           <AppDarkToggle />
@@ -14,20 +15,24 @@
           <AppLogin v-else />
         </div>
       </div>
+
+      <AppSlideMenu v-model="showSlideMenu" />
     </div>
   </header>
 </template>
 
 <script lang="tsx" setup>
-import LogoLight from '@/assets/svg/logo.svg'
-import LogoDark from '@/assets/svg/logo-dark.svg'
-
 const colorMode = useColorMode()
-
-const Logo = () => {
-  return colorMode.value == 'dark' ? <LogoDark /> : <LogoLight />
-}
 
 const userStore = useUserStore()
 const router = useRouter()
+const route = useRoute()
+const showSlideMenu = ref(false)
+watch(
+  () => route.path,
+  (path) => {
+    showSlideMenu.value = false
+  },
+  { immediate: true }
+)
 </script>

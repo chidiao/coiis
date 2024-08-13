@@ -17,23 +17,17 @@
         <div class="flex justify-between items-center">
           <div class="text-xl font-bold dark:text-white">All Results (650)</div>
 
-          <a-select ref="select" v-model:value="value" class="w-32">
-            <a-select-option value="Alphabetical">Alphabetical</a-select-option>
-            <a-select-option value="Relevance">Relevance</a-select-option>
-            <a-select-option value="Last Updated">Last Updated</a-select-option>
-            <a-select-option value="Trending">Trending</a-select-option>
-          </a-select>
+          <USelectMenu size="xs" v-model="value" :options="options" />
         </div>
 
-        <a-input placeholder="Search" class="my-8">
-          <template #prefix>
-            <SearchOutlined />
-          </template>
-
-          <template #suffix>
-            <a-tag class="mr-0">Enter</a-tag>
-          </template>
-        </a-input>
+        <UInput
+          class="w-full my-8"
+          icon="i-heroicons-magnifying-glass-20-solid"
+          size="xs"
+          color="white"
+          :trailing="false"
+          placeholder="Search..."
+        />
 
         <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           <ApiCard
@@ -57,8 +51,8 @@
 definePageMeta({
   layout: 'fixed-header'
 })
-import { SearchOutlined } from '@ant-design/icons-vue'
 
+const options = ['Alphabetical', 'Relevance', 'Last Updated', 'Trending']
 const value = ref('Alphabetical')
 
 const category = ref({

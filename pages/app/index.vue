@@ -9,19 +9,19 @@
       <UButton>Explore Blog</UButton>
     </CommonBanner>
 
-    <HomeGrids class="mt-5" />
+    <TopGrids class="mt-5" />
 
-    <HomeSection title="Top Categories" more="View All Categories" to="/app/category">
+    <TopSection title="Top Categories" more="View All Categories" to="/app/category">
       <TopCategories :list="categoryList" />
-    </HomeSection>
+    </TopSection>
 
-    <HomeSection title="Top Collections" more="View All Collections" to="/app/collections">
+    <TopSection title="Top Collections" more="View All Collections" to="/app/collections">
       <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-5">
-        <Collection v-for="i in 4" :value="i" />
+        <CommonCollection v-for="i in 4" :value="i" />
       </div>
-    </HomeSection>
+    </TopSection>
 
-    <HomeSection title="Trending APIs" more="View All Trending APIs" to="/search">
+    <TopSection title="Trending APIs" more="View All Trending APIs" to="/search">
       <div class="grid md:grid-cols-3 gap-5">
         <ApiCard
           tag="Sports"
@@ -35,7 +35,7 @@
           v-for="i in 6"
         />
       </div>
-    </HomeSection>
+    </TopSection>
   </div>
 </template>
 

@@ -9,7 +9,7 @@
 
     <div
       class="text-xs px-[6px] py-[2px] rounded transition"
-      :class="[isActive ? 'bg-[#3b82f6] text-white' : 'bg-[#f3f4f6] text-black']"
+      :class="[isActive ? 'bg-[#3b82f6] text-white' : 'bg-[#f3f4f6] dark:bg-[#3f3f46] text-black dark:text-white']"
     >
       {{ count }}
     </div>

@@ -3,7 +3,7 @@
     <div class="w-full flex justify-between items-center text-xs dark:text-white">
       <div>{{ title }}</div>
 
-      <ExclamationCircleOutlined />
+      <UIcon name="i-heroicons-exclamation-circle" class="size-4" />
     </div>
 
     <div class="text-lg font-bold mt-3 dark:text-white">
@@ -16,5 +16,4 @@
 defineProps<{
   title: string
 }>()
-import { ExclamationCircleOutlined } from '@ant-design/icons-vue'
 </script>

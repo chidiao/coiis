@@ -13,7 +13,7 @@
         type="button"
         class="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0 font-medium rounded-full text-sm gap-x-2 px-3 py-2 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 text-gray-900 dark:text-white bg-white hover:bg-gray-50 disabled:bg-white dark:bg-gray-900 dark:hover:bg-gray-800/50 dark:disabled:bg-gray-900 focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 w-full flex justify-center items-center"
       >
-        <GithubOutlined class="size-5 shrink-0" />
+        <UIcon name="i-ant-design:github-filled" class="size-5 shrink-0" />
         <span class="">Continue with GitHub</span>
       </button>
 
@@ -23,7 +23,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { GithubOutlined } from '@ant-design/icons-vue'
-</script>

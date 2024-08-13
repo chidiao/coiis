@@ -9,11 +9,14 @@
         </div>
       </div>
 
-      <a-input placeholder="search" class="max-w-64 mt-5 xl:mt-auto">
-        <template #prefix>
-          <SearchOutlined />
-        </template>
-      </a-input>
+      <UInput
+        class="max-w-64 mt-5 xl:mt-auto"
+        icon="i-heroicons-magnifying-glass-20-solid"
+        size="xs"
+        color="white"
+        :trailing="false"
+        placeholder="Search..."
+      />
     </div>
 
     <div v-auto-animate>
@@ -27,8 +30,6 @@
 </template>
 
 <script setup>
-import { SearchOutlined } from '@ant-design/icons-vue'
-
 const { applicationApi } = useApi()
 const { data: list, status } = useAsyncData('getCategoryList', async () => {
   const { data } = await applicationApi.getCategoryList()
