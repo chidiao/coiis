@@ -82,9 +82,13 @@ const router = useRouter()
 const loading = ref(false)
 const onSubmit = async () => {
   loading.value = true
-  const { message } = await userApi.resetPassword(state.value)
-  loading.value = false
-  toast.add({ title: message })
-  router.replace('/account/login')
+
+  try {
+    const { message } = await userApi.resetPassword(state.value)
+    toast.add({ title: message })
+    router.replace('/account/login')
+  } finally {
+    loading.value = false
+  }
 }
 </script>

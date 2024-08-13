@@ -57,9 +57,13 @@ const userStore = useUserStore()
 const loading = ref(false)
 const login = async () => {
   loading.value = true
-  const { data } = await userApi.login(state.value)
-  loading.value = false
-  userStore.setUserInfo(data)
-  router.replace('/')
+
+  try {
+    const { data } = await userApi.login(state.value)
+    userStore.setUserInfo(data)
+    router.replace('/')
+  } finally {
+    loading.value = false
+  }
 }
 </script>
