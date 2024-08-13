@@ -17,7 +17,7 @@
         <div class="flex justify-between items-center">
           <div class="text-xl font-bold dark:text-white">All Results (650)</div>
 
-          <USelectMenu size="xs" v-model="value" :options="options" />
+          <USelectMenu v-model="value" :options="options" />
         </div>
 
         <UInput

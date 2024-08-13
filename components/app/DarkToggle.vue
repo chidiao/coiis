@@ -1,18 +1,20 @@
 <template>
-  <UButton
-    class="size-[31px] flex justify-center items-center"
-    icon="i-heroicons-moon"
-    color="white"
-    @click="toggle"
-    v-if="isDark"
-  />
-  <UButton
-    class="size-[31px] flex justify-center items-center"
-    icon="i-heroicons-sun"
-    color="white"
-    @click="toggle"
-    v-else
-  />
+  <div class="size-[31px]" v-auto-animate>
+    <UButton
+      class="size-full flex justify-center items-center"
+      icon="i-heroicons-moon"
+      color="white"
+      @click="toggle"
+      v-if="isDark"
+    />
+    <UButton
+      class="size-full flex justify-center items-center"
+      icon="i-heroicons-sun"
+      color="white"
+      @click="toggle"
+      v-else
+    />
+  </div>
 </template>
 
 <script setup>

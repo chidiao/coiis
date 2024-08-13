@@ -1,30 +1,39 @@
 export const menu = {
   links: [
-    {
-      label: 'Home',
-      icon: 'i-heroicons-home',
-      to: '/app'
-    },
-    {
-      label: 'Workspace',
-      icon: 'i-heroicons-briefcase',
-      to: '/app/workspace'
-    },
-    {
-      label: 'Collections',
-      icon: 'i-heroicons-star',
-      to: '/app/collections'
-    },
-    {
-      label: 'Categories',
-      icon: 'i-heroicons-squares-2x2',
-      to: '/app/category'
-    },
-    {
-      label: 'Search',
-      icon: 'i-heroicons-magnifying-glass',
-      to: '/search'
-    }
+    [
+      {
+        label: 'Home',
+        icon: 'i-heroicons-home',
+        to: '/app'
+      },
+      {
+        label: 'Workspace',
+        icon: 'i-heroicons-chart-bar',
+        to: '/app/workspace'
+      },
+      {
+        label: 'Collections',
+        icon: 'i-heroicons-star',
+        to: '/app/collections'
+      },
+      {
+        label: 'Categories',
+        icon: 'i-heroicons-squares-2x2',
+        to: '/app/category'
+      }
+    ],
+    [
+      {
+        label: 'Organizations',
+        icon: 'i-heroicons-briefcase',
+        to: '/org'
+      },
+      {
+        label: 'Search',
+        icon: 'i-heroicons-magnifying-glass',
+        to: '/search'
+      }
+    ]
   ],
   ui: {
     base: 'gap-3',

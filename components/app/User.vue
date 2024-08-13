@@ -18,7 +18,8 @@ const items = [
     },
     {
       label: 'Settings',
-      icon: 'i-feather-settings'
+      icon: 'i-feather-settings',
+      to: '/account/settings'
     }
   ],
   [

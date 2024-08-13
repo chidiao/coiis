@@ -11,7 +11,8 @@ export const useApi = () => {
         $http.post<{ pkey: string }>('/yac-user/v1/user/password-reset/email', { email }),
       register: (params: RegisterParams) => $http.post<RegisterData>('/yac-user/v1/user/register', params),
       resetPassword: (params: RegisterParams) => $http.post<RegisterData>('/yac-user/v1/user/password/reset', params),
-      editPassword: (params: any) => $http.put('/yac-user/v1/user/password', params),
+      modifyPassword: (params: { old_password: string; password: string }) =>
+        $http.put('/yac-user/v1/user/password', params),
       login: (params: LoginParams) => $http.post<LoginData>('/yac-user/v1/user/login', params)
     },
     applicationApi: {

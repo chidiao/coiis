@@ -22,6 +22,16 @@ export default defineAppConfig({
         loadingIcon: 'i-feather-loader'
       }
     },
+    select: {
+      default: {
+        size: 'xs'
+      }
+    },
+    selectMenu: {
+      option: {
+        size: 'text-xs'
+      }
+    },
     dropdown: {
       item: {
         base: 'gap-2',

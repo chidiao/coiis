@@ -28,7 +28,7 @@
     </div>
 
     <div class="relative h-44 my-8">
-      <div class="absolute z-10 flex h-full w-full flex-col items-center justify-center gap-2">
+      <div class="absolute z-10 flex h-full w-full flex-col items-center justify-center px-5 text-center gap-2">
         <div class="dark:text-white">There are no APIs that you manage</div>
         <div class="text-gray-500 dark:text-zinc-400 text-sm">
           Consider creating an API on our platform to share it with everyone or keep it private
@@ -52,7 +52,7 @@
     </div>
 
     <div class="relative h-44 my-8">
-      <div class="absolute z-10 flex h-full w-full flex-col items-center justify-center gap-2">
+      <div class="absolute z-10 flex h-full w-full flex-col items-center justify-center px-5 text-center gap-2">
         <div class="dark:text-white">There are no APIs that you subscribed to</div>
         <div class="text-gray-500 dark:text-zinc-400 text-sm">Explore now</div>
         <UButton>Find your next API</UButton>

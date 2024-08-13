@@ -9,6 +9,11 @@ const BASE_URL = 'https://api.coiis.com'
 export default defineNuxtPlugin((nuxtApp) => {
   const http = $fetch.create({
     baseURL: BASE_URL,
+    onRequest: ({ options }) => {
+      const userStore = useUserStore()
+      options.headers = new Headers(options.headers)
+      userStore.userInfo?.token && options.headers.set('Authorization', userStore.userInfo.token)
+    },
     onResponse: ({ response }) => {
       if (response._data?.code === 0) {
         return response._data
