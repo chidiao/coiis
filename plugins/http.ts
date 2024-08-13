@@ -29,12 +29,12 @@ export default defineNuxtPlugin((nuxtApp) => {
     provide: {
       http: {
         get: <T>(url: string, opts?: any): Promise<ResType<T>> => http(url, { method: 'GET', ...opts }),
-        post: <T>(url: string, data?: any, opts?: any): Promise<ResType<T>> =>
-          http(url, { method: 'POST', body: data, ...opts }),
-        put: <T>(url: string, data?: any, opts?: any): Promise<ResType<T>> =>
-          http(url, { method: 'PUT', body: data, ...opts }),
-        delete: <T>(url: string, data?: any, opts?: any): Promise<ResType<T>> =>
-          http(url, { method: 'DELETE', body: data, ...opts })
+        post: <T>(url: string, body?: any, opts?: any): Promise<ResType<T>> =>
+          http(url, { method: 'POST', body: body, ...opts }),
+        put: <T>(url: string, body?: any, opts?: any): Promise<ResType<T>> =>
+          http(url, { method: 'PUT', body: body, ...opts }),
+        delete: <T>(url: string, body?: any, opts?: any): Promise<ResType<T>> =>
+          http(url, { method: 'DELETE', body: body, ...opts })
       }
     }
   }
