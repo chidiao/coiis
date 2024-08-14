@@ -40,7 +40,7 @@
 </template>
 
 <script setup>
-const { applicationApi } = useApi()
+const { applicationApi } = useApis()
 const { data: categoryList, categoryStatus } = useAsyncData('getCategoryList', async () => {
   const { data } = await applicationApi.getCategoryList()
 

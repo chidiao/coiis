@@ -33,7 +33,7 @@ definePageMeta({
 
 import { z } from 'zod'
 
-const { userApi } = useApi()
+const { userApi } = useApis()
 
 const schema = z.object({
   old_password: z.string().min(8, 'Must be at least 8 characters'),

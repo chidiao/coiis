@@ -44,7 +44,7 @@ import { z } from 'zod'
 import type { LoginParams } from '@/types/user'
 
 const router = useRouter()
-const { userApi } = useApi()
+const { userApi } = useApis()
 
 const schema = z.object({
   email: z.string().email('Invalid email'),

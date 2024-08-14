@@ -46,7 +46,7 @@ definePageMeta({
 
 import { z } from 'zod'
 
-const { userApi } = useApi()
+const { userApi } = useApis()
 
 const schema = z.object({
   email: z.string().email('Invalid email'),

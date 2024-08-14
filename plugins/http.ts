@@ -30,11 +30,11 @@ export default defineNuxtPlugin((nuxtApp) => {
       http: {
         get: <T>(url: string, opts?: any): Promise<ResType<T>> => http(url, { method: 'GET', ...opts }),
         post: <T>(url: string, body?: any, opts?: any): Promise<ResType<T>> =>
-          http(url, { method: 'POST', body: body, ...opts }),
+          http(url, { method: 'POST', body, ...opts }),
         put: <T>(url: string, body?: any, opts?: any): Promise<ResType<T>> =>
-          http(url, { method: 'PUT', body: body, ...opts }),
+          http(url, { method: 'PUT', body, ...opts }),
         delete: <T>(url: string, body?: any, opts?: any): Promise<ResType<T>> =>
-          http(url, { method: 'DELETE', body: body, ...opts })
+          http(url, { method: 'DELETE', body, ...opts })
       }
     }
   }

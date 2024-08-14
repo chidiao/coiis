@@ -10,24 +10,39 @@
 
     <div class="px-2 py-3 xl:px-5 xl:py-5 xl:flex items-center xl:gap-5">
       <div class="shrink-0">
-        <UAvatar src="https://picsum.photos/200" size="lg" />
+        <UAvatar :src="organization_logo" size="lg" />
       </div>
 
       <div class="grow">
-        <div class="text-sm">Robinhood</div>
-        <div class="text-sm font-bold mt-2">Engineering Manager Developer Experience</div>
+        <div class="text-sm">{{ organization_name }}</div>
+        <div class="text-sm font-bold mt-2">{{ organization_description }}</div>
         <div class="flex items-center gap-1 flex-wrap cursor-pointer py-2">
-          <UBadge variant="soft" size="xs">Sports</UBadge>
-          <UBadge variant="soft" size="xs">Finance</UBadge>
+          <UBadge variant="soft" size="xs">{{ organization_code }}</UBadge>
         </div>
       </div>
 
       <div class="py-2 flex items-center shrink-0">
-        <UButton icon="i-heroicons-paper-airplane" class="rounded-full" trailing to="/org/6">Join now</UButton>
+        <UButton icon="i-heroicons-paper-airplane" class="rounded-full" trailing :to="`/org/${id}`">Join now</UButton>
       </div>
     </div>
   </div>
 </template>
+
+<script lang="ts" setup>
+defineProps<{
+  id?: number
+  organization_code?: string
+  organization_name?: string
+  organization_description?: string
+  organization_logo?: string
+  organization_banner?: string
+  gmt_create?: number
+  gmt_modified?: number
+  status?: number
+  data_state?: boolean
+  tenant_code?: string
+}>()
+</script>
 
 <style scoped>
 .group:hover .group .border-t,

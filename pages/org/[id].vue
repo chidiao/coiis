@@ -2,10 +2,14 @@
   <div class="container mx-auto p-5 dark:text-white">
     <UButton icon="i-heroicons-arrow-left" class="-ml-3" size="lg" variant="link" to="/org">All Organizations</UButton>
 
-    <div class="py-5 max-w-2xl space-y-8 text-gray-500 dark:text-zinc-400">
-      <div class="text-3xl font-bold text-black dark:text-white">Engineering Manager Developer Experience</div>
+    <div class="py-5 max-w-2xl text-gray-500 dark:text-zinc-400">
+      <div class="text-3xl font-bold text-black dark:text-white">{{ org?.organization_name }}</div>
 
-      <div class="space-y-4">
+      <div class="mt-4">{{ org?.organization_description }}</div>
+
+      <img :src="org?.organization_banner" class="w-full mt-4" />
+
+      <div class="space-y-4 mt-8">
         <p class="text-xl font-bold text-black dark:text-white">The Role</p>
         <p>In the world of AI, behavioural predictions are leading the charge to better machine learning.</p>
 
@@ -25,7 +29,7 @@
         </p>
       </div>
 
-      <div class="space-y-4">
+      <div class="space-y-4 mt-8">
         <p class="text-xl font-bold text-black dark:text-white">About You</p>
         <p>
           You love building great software. Your work could be supporting new feature development, migrating existing
@@ -48,7 +52,7 @@
         </p>
       </div>
 
-      <div class="space-y-4">
+      <div class="space-y-4 mt-8">
         <p class="text-xl font-bold text-black dark:text-white">Things You Might Do</p>
         <p>
           We are a fast-growing, and remote-first company, so you'll likely get experience on many different projects
@@ -72,3 +76,13 @@
     </div>
   </div>
 </template>
+
+<script setup>
+const { id } = useRoute().params
+const { organizationApi } = useApis()
+const { data: org, status } = useAsyncData('organizationDetail', async () => {
+  const { data } = await organizationApi.getDetail(id)
+
+  return data
+})
+</script>
