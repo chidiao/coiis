@@ -1,16 +1,9 @@
 <template>
   <div class="w-full max-w-screen-2xl mx-auto p-5 pb-0 dark:bg-[#212121]">
-    <div class="w-full rounded-xl bg-[#fafafa] dark:bg-[#262626] min-h-[144px] p-5">
-      <div class="size-full flex flex-col justify-center items-center gap-5">
-        <div class="text-2xl font-bold dark:text-white">{{ name }} APIs</div>
-        <div class="text-sm text-gray-500 dark:text-zinc-400 max-w-3xl text-center mx-auto">
-          {{ category?.category_description }}
-        </div>
-      </div>
-    </div>
+    <ApiBanner :category="category" />
 
     <div class="w-full grid xl:flex mt-8 mx-auto">
-      <SearchCategoryList v-model="category" />
+      <ApiCategoryList v-model="category" />
 
       <div class="grow rounded-xl border dark:border-gray-700 p-8">
         <div class="flex justify-between items-center">
@@ -51,12 +44,12 @@ definePageMeta({
   layout: 'fixed-header'
 })
 
-const { name } = useRoute().params
+const { id } = useRoute().params
 
 const options = ['Alphabetical', 'Relevance', 'Last Updated', 'Trending']
 const value = ref('Alphabetical')
 
 const category = ref({
-  category_name: name
+  id: id
 })
 </script>

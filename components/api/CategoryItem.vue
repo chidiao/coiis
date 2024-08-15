@@ -4,8 +4,9 @@
     :class="{
       'bg-gray-200 dark:bg-[#3f3f46]': isActive
     }"
+    @click="router.replace(`/api/${category?.id}`)"
   >
-    <div class="text-xs dark:text-white truncate mr-5">{{ category }}</div>
+    <div class="text-xs dark:text-white truncate mr-5">{{ category?.category_name }}</div>
 
     <div
       class="text-xs px-[6px] py-[2px] rounded transition"
@@ -18,8 +19,13 @@
 
 <script lang="ts" setup>
 defineProps<{
-  category?: string
+  category?: {
+    category_name?: string
+    id?: number
+  }
   count?: number
   isActive?: boolean
 }>()
+
+const router = useRouter()
 </script>

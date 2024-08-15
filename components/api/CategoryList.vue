@@ -10,12 +10,11 @@
       <AppLoading v-if="status == 'pending'" />
 
       <div v-else>
-        <SearchCategoryItem
+        <ApiCategoryItem
           v-for="i in list"
-          :category="i.category_name"
+          :category="i"
           :count="i?.category_description?.length || 0"
           :is-active="model?.category_name == i.category_name"
-          @click="model = i"
         />
       </div>
     </div>
@@ -26,7 +25,7 @@
 
 <script setup>
 const { applicationApi } = useApis()
-const { data: list, status } = useAsyncData('getCategoryList', async () => {
+const { data: list, status } = useAsyncData('category', async () => {
   const { data } = await applicationApi.getCategoryList()
 
   return data
@@ -37,7 +36,7 @@ const updateInfo = () => {
   if (model.value.category_description) return
   if (status.value == 'pending') return
 
-  let isExsit = list.value.find((i) => i.category_name == model.value.category_name)
+  let isExsit = list.value.find((i) => i.id == model.value.id)
   if (isExsit) model.value = isExsit
 }
 

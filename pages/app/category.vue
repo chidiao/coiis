@@ -31,7 +31,7 @@
 
 <script setup>
 const { applicationApi } = useApis()
-const { data: list, status } = useAsyncData('getCategoryList', async () => {
+const { data: list, status } = useAsyncData('category', async () => {
   const { data } = await applicationApi.getCategoryList()
 
   return data
