@@ -1,6 +1,5 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
-  ssr: false,
   devtools: { enabled: false },
   css: ['@/assets/style/index.css'],
   modules: ['@nuxt/ui', '@formkit/auto-animate/nuxt', '@pinia/nuxt', '@vueuse/nuxt', 'nuxt-svgo'],
@@ -18,6 +17,7 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/app': { prerender: true },
-    '/app/category': { ssr: true }
+    '/app/category': { prerender: true },
+    '*': { ssr: false }
   }
 })
