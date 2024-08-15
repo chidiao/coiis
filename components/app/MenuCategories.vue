@@ -12,7 +12,7 @@ const sizeClass = 'pl-[50px] px-5 py-3 text-xs rounded-md'
 const colorClass = 'text-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 dark:text-zinc-400 dark:hover:text-white'
 
 const { applicationApi } = useApis()
-const { data: list } = useAsyncData('category', async () => {
+const { data: list } = useAsyncData('topCategory', async () => {
   const { data } = await applicationApi.getCategoryList()
 
   return data?.slice(0, 8) || []
