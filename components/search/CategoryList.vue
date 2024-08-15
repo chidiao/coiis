@@ -14,7 +14,7 @@
           v-for="i in list"
           :category="i.category_name"
           :count="i?.category_description?.length || 0"
-          :is-active="model?.id == i.id"
+          :is-active="model?.category_name == i.category_name"
           @click="model = i"
         />
       </div>
@@ -33,4 +33,15 @@ const { data: list, status } = useAsyncData('getCategoryList', async () => {
 })
 
 const model = defineModel()
+const updateInfo = () => {
+  if (model.value.category_description) return
+  if (status.value == 'pending') return
+
+  let isExsit = list.value.find((i) => i.category_name == model.value.category_name)
+  if (isExsit) model.value = isExsit
+}
+
+watch([model, status], () => {
+  updateInfo()
+})
 </script>

@@ -21,7 +21,7 @@
       </div>
     </TopSection>
 
-    <TopSection title="Trending APIs" more="View All Trending APIs" to="/search">
+    <TopSection title="Trending APIs" more="View All Trending APIs" to="/api/search">
       <div class="grid md:grid-cols-3 gap-5">
         <ApiCard
           tag="Sports"
@@ -41,7 +41,7 @@
 
 <script setup>
 const { applicationApi } = useApis()
-const { data: categoryList, categoryStatus } = useAsyncData('getCategoryList', async () => {
+const { data: categoryList, categoryStatus } = useAsyncData('topCategories', async () => {
   const { data } = await applicationApi.getCategoryList()
 
   return data.slice(0, 8)

@@ -17,21 +17,15 @@ export const menu = {
         to: '/app/collections'
       },
       {
-        label: 'Categories',
-        icon: 'i-heroicons-squares-2x2',
-        to: '/app/category'
+        label: 'Organizations',
+        icon: 'i-heroicons-briefcase',
+        to: '/org'
       }
     ],
     [
       {
-        label: 'Organizations',
-        icon: 'i-heroicons-briefcase',
-        to: '/org'
-      },
-      {
-        label: 'Search',
-        icon: 'i-heroicons-magnifying-glass',
-        to: '/search'
+        label: 'Categories',
+        icon: 'i-heroicons-squares-2x2'
       }
     ]
   ],

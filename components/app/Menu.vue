@@ -1,6 +1,7 @@
 <template>
   <div class="w-full">
     <UVerticalNavigation :links="menu.links" :ui="menu.ui" />
+    <AppMenuCategories />
   </div>
 </template>
 
