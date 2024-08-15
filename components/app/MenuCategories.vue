@@ -21,6 +21,6 @@ const { data: list } = useAsyncData('category', async () => {
 const short = computed(() => {
   if (!list.value) return []
 
-  return list.value.filter((i) => i.category_name && i.category_name.length < 20)
+  return list.value.slice(0, 8).filter((i) => i.category_name && i.category_name.length < 20)
 })
 </script>

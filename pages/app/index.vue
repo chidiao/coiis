@@ -12,7 +12,7 @@
     <TopGrids class="mt-5" />
 
     <TopSection title="Top Categories" more="View All Categories" to="/app/category">
-      <TopCategories :list="categoryList" />
+      <TopCategories :list="topCategory" />
     </TopSection>
 
     <TopSection title="Top Collections" more="View All Collections" to="/app/collections">
@@ -44,6 +44,12 @@ const { applicationApi } = useApis()
 const { data: categoryList, categoryStatus } = useAsyncData('category', async () => {
   const { data } = await applicationApi.getCategoryList()
 
-  return data.slice(0, 8)
+  return data
+})
+
+const topCategory = computed(() => {
+  if (!categoryList.value) return []
+
+  return categoryList.value.slice(0, 8)
 })
 </script>
