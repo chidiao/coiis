@@ -52,4 +52,10 @@ const topCategory = computed(() => {
 
   return categoryList.value.slice(0, 8)
 })
+
+// const { data: groupList } = useAsyncData('topGroup', async () => {
+//   const { data } = await applicationApi.getGroupList()
+
+//   return data
+// })
 </script>

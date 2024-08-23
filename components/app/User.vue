@@ -11,9 +11,9 @@ const userStore = useUserStore()
 const items = [
   [
     {
-      label: userStore.userInfo?.email ?? '...',
+      label: userStore.userInfo?.nickname ?? userStore.userInfo?.email ?? '...',
       avatar: {
-        alt: userStore.userInfo?.email ?? '...'
+        src: userStore.userInfo?.user_info?.avatar_url
       }
     },
     {

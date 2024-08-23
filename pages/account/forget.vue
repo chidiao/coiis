@@ -27,9 +27,9 @@
           <UInput v-model="state.password" type="password" placeholder="Enter your password" />
         </UFormGroup>
 
-        <UFormGroup label="Pkey" name="pkey">
+        <!-- <UFormGroup label="Pkey" name="pkey">
           <UInput v-model="state.pkey" placeholder="Enter your pkey" readonly />
-        </UFormGroup>
+        </UFormGroup> -->
 
         <div class="pt-5">
           <UButton class="rounded-full" size="md" type="submit" block :loading="loading">Reset password</UButton>

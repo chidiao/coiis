@@ -37,4 +37,22 @@ export interface LoginData {
   tenant_code?: string
   token?: string
   message_state?: boolean
+  user_info?: UserInfo
+}
+
+export interface UserInfoParams {
+  nickname?: string
+  first_name?: string
+  last_name?: string
+  phone_number?: string
+  user_info?: UserInfo
+}
+
+export interface UserInfo {
+  user_age?: number
+  user_gender?: number
+  avatar_url?: string
+  company_name?: string
+  company_tel?: string
+  address?: string
 }

@@ -1,5 +1,5 @@
 import type { ApplicationCategory } from '@/types/application'
-import type { RegisterParams, RegisterData, LoginParams, LoginData } from '@/types/user'
+import type { RegisterParams, RegisterData, LoginParams, LoginData, UserInfoParams } from '@/types/user'
 import type { OrganizationList, Organization, OrganizationDetail } from '~/types/organization'
 
 export const useApis = () => {
@@ -14,7 +14,9 @@ export const useApis = () => {
       resetPassword: (params: RegisterParams) => $http.post<RegisterData>('/yac-user/v1/user/password/reset', params),
       modifyPassword: (params: { old_password: string; password: string }) =>
         $http.put('/yac-user/v1/user/password', params),
-      login: (params: LoginParams) => $http.post<LoginData>('/yac-user/v1/user/login', params)
+      login: (params: LoginParams) => $http.post<LoginData>('/yac-user/v1/user/login', params),
+      getUserInfo: () => $http.get<LoginData>('/yac-user/v1/user'),
+      putUserInfo: (params: UserInfoParams) => $http.put('/yac-user/v1/user/info', params)
     },
     organizationApi: {
       getStarList: () => $http.get<Array<Organization>>('/yaco-web/v1/organization/star-suppliers'),
@@ -25,7 +27,8 @@ export const useApis = () => {
       getDetail: (id: string) => $http.get<OrganizationDetail>(`/yaco-web/v1/organization/${id}`)
     },
     applicationApi: {
-      getCategoryList: () => $http.get<Array<ApplicationCategory>>('/yaco-web/v1/application-category/list')
+      getCategoryList: () => $http.get<Array<ApplicationCategory>>('/yaco-web/v1/application-category/list'),
+      getGroupList: () => $http.get('/yaco-web/v1/application/api/groups')
     }
   }
 }

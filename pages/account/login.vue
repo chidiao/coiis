@@ -24,8 +24,6 @@
           <UButton class="rounded-full" size="md" type="submit" block :loading="loading">Continue</UButton>
 
           <div class="flex justify-center items-center">
-            <UButton variant="link" size="sm" to="/account/modify">Modify password</UButton>
-            <span class="text-primary-500 text-[10px]">/</span>
             <UButton variant="link" size="sm" to="/account/forget">Forget password</UButton>
           </div>
         </div>
