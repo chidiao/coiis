@@ -13,6 +13,7 @@ export const useUserStore = defineStore('user', () => {
     loading.value = false
 
     setUserInfo(data)
+    return data
   }
 
   const setUserInfo = (data?: LoginData) => {
