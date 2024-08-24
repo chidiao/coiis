@@ -14,30 +14,30 @@
     </div>
 
     <div v-if="!userStore.loading && userStore.isLogin">
-      <div class="w-full max-w-sm my-5 space-y-5">
-        <UFormGroup label="Nickname" help="Your name may appear around Coiis.">
+      <div class="w-full">
+        <AccountFormGroup label="Nickname" description="Your name may appear around Coiis.">
           <UInput placeholder="Enter your name" v-model="state.nickname" />
-        </UFormGroup>
+        </AccountFormGroup>
 
-        <UFormGroup label="First name">
+        <AccountFormGroup label="First name">
           <UInput v-model="state.first_name" />
-        </UFormGroup>
+        </AccountFormGroup>
 
-        <UFormGroup label="Last name">
+        <AccountFormGroup label="Last name">
           <UInput v-model="state.last_name" />
-        </UFormGroup>
+        </AccountFormGroup>
 
-        <UFormGroup label="Phone number">
+        <AccountFormGroup label="Phone number">
           <UInput v-model="state.phone_number" />
-        </UFormGroup>
+        </AccountFormGroup>
 
         <UDivider />
 
-        <UFormGroup label="Age">
+        <AccountFormGroup label="Age">
           <UInput type="number" v-model="state.user_info!.user_age" />
-        </UFormGroup>
+        </AccountFormGroup>
 
-        <UFormGroup label="Gender">
+        <AccountFormGroup label="Gender">
           <USelectMenu
             v-model="state.user_info!.user_gender"
             :options="genders"
@@ -45,26 +45,26 @@
             value-attribute="value"
             option-attribute="label"
           />
-        </UFormGroup>
+        </AccountFormGroup>
 
-        <UFormGroup label="Avatar url">
+        <AccountFormGroup label="Avatar url">
           <UInput v-model="state.user_info!.avatar_url" />
-        </UFormGroup>
+        </AccountFormGroup>
 
-        <UFormGroup label="Company name">
+        <AccountFormGroup label="Company name">
           <UInput v-model="state.user_info!.company_name" />
-        </UFormGroup>
+        </AccountFormGroup>
 
-        <UFormGroup label="Company tel">
+        <AccountFormGroup label="Company tel">
           <UInput v-model="state.user_info!.company_tel" />
-        </UFormGroup>
+        </AccountFormGroup>
 
-        <UFormGroup label="Address">
+        <AccountFormGroup label="Address">
           <UInput v-model="state.user_info!.address" />
-        </UFormGroup>
+        </AccountFormGroup>
 
-        <div class="pt-5">
-          <UButton size="sm" :loading="updateLoading" @click="update">Update</UButton>
+        <div class="py-8 w-full flex justify-end">
+          <UButton size="sm" :loading="updateLoading" @click="update">Save changes</UButton>
         </div>
       </div>
     </div>

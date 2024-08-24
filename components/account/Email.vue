@@ -7,26 +7,30 @@
       </div>
     </div>
 
-    <UForm :schema="schema" :state="state" class="w-full max-w-sm my-5 space-y-5" @submit="onSubmit">
-      <UFormGroup label="New email" name="email">
+    <UForm :schema="schema" :state="state" class="w-full" @submit="onSubmit">
+      <AccountFormGroup
+        label="New email"
+        name="email"
+        description="Used to sign in, for email receipts and product updates."
+      >
         <UInput v-model="state.email" type="password" placeholder="Enter your new email" />
-      </UFormGroup>
+      </AccountFormGroup>
 
-      <UFormGroup label="Verification code" name="verification_code">
+      <AccountFormGroup label="Verification code" name="verification_code">
         <div class="flex justify-between items-center space-x-4">
           <UInput class="w-2/3" v-model="state.verification_code" placeholder="Enter your verification code" />
-          <UButton class="w-1/3 justify-center" @click="sendCode">
+          <UButton class="w-1/3 justify-center" size="sm" @click="sendCode">
             {{ countDown.countStr }}
           </UButton>
         </div>
-      </UFormGroup>
+      </AccountFormGroup>
 
-      <UFormGroup label="Password" name="password">
+      <AccountFormGroup label="Password" name="password">
         <UInput v-model="state.password" type="password" placeholder="Enter your password" />
-      </UFormGroup>
+      </AccountFormGroup>
 
-      <div class="pt-5">
-        <UButton type="submit" size="sm" :loading="loading">Update password</UButton>
+      <div class="py-8 w-full flex justify-end">
+        <UButton type="submit" size="sm" :loading="loading">Reset email</UButton>
       </div>
     </UForm>
   </div>

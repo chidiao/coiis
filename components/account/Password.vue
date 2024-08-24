@@ -7,21 +7,21 @@
       </div>
     </div>
 
-    <UForm :schema="schema" :state="state" class="w-full max-w-sm my-5 space-y-5" @submit="onSubmit">
-      <UFormGroup label="Old password" name="old_password">
+    <UForm :schema="schema" :state="state" class="w-full" @submit="onSubmit">
+      <AccountFormGroup label="Old password" name="old_password">
         <UInput v-model="state.old_password" type="password" placeholder="Enter your old password" />
-      </UFormGroup>
+      </AccountFormGroup>
 
-      <UFormGroup label="New password" name="password">
+      <AccountFormGroup label="New password" name="password">
         <UInput v-model="state.password" type="password" placeholder="Enter your new password" />
-      </UFormGroup>
+      </AccountFormGroup>
 
-      <UFormGroup label="Confirm password" name="confirm">
+      <AccountFormGroup label="Confirm password" name="confirm">
         <UInput v-model="state.confirm" type="password" placeholder="Confirm your new password" />
-      </UFormGroup>
+      </AccountFormGroup>
 
-      <div class="pt-5">
-        <UButton type="submit" size="sm" :loading="loading">Update password</UButton>
+      <div class="py-8 w-full flex justify-end">
+        <UButton type="submit" size="sm" :loading="loading">Reset password</UButton>
       </div>
     </UForm>
   </div>
