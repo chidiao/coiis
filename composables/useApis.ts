@@ -1,5 +1,5 @@
 import type { ApplicationCategory } from '@/types/application'
-import type { RegisterParams, RegisterData, LoginParams, LoginData, UserInfoParams } from '@/types/user'
+import type { RegisterParams, RegisterData, LoginParams, LoginData, UserInfoParams, EmailParams } from '@/types/user'
 import type { OrganizationList, Organization, OrganizationDetail } from '~/types/organization'
 
 export const useApis = () => {
@@ -16,7 +16,8 @@ export const useApis = () => {
         $http.put('/yac-user/v1/user/password', params),
       login: (params: LoginParams) => $http.post<LoginData>('/yac-user/v1/user/login', params),
       getUserInfo: () => $http.get<LoginData>('/yac-user/v1/user'),
-      putUserInfo: (params: UserInfoParams) => $http.put('/yac-user/v1/user/info', params)
+      putUserInfo: (params: UserInfoParams) => $http.put('/yac-user/v1/user/info', params),
+      putEmail: (params: EmailParams) => $http.put('/yac-user/v1/user/email', params)
     },
     organizationApi: {
       getStarList: () => $http.get<Array<Organization>>('/yaco-web/v1/organization/star-suppliers'),

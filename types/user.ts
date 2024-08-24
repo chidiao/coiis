@@ -48,6 +48,13 @@ export interface UserInfoParams {
   user_info?: UserInfo
 }
 
+export interface EmailParams {
+  email?: string
+  password?: string
+  verification_code?: string
+  pkey?: string
+}
+
 export interface UserInfo {
   user_age?: number
   user_gender?: number
