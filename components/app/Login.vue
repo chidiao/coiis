@@ -1,7 +1,9 @@
 <template>
   <div class="flex items-center">
     <div class="hidden xl:flex items-center space-x-3">
-      <UButton v-for="(i, k) in items[0]" @click="i.click" :color="k > 0 ? 'white' : 'primary'">{{ i.label }}</UButton>
+      <Button v-for="(i, k) in items[0]" @click="i.click" size="small" :severity="i.severity">
+        {{ i.label }}
+      </Button>
     </div>
 
     <UDropdown :items="items" :popper="{ placement: 'bottom-start' }">
@@ -23,6 +25,7 @@ const items = [
     },
     {
       label: 'Sign Up',
+      severity: 'secondary',
       click: () => {
         router.push('/account/signup')
       }

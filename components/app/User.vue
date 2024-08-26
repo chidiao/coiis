@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex justify-center items-center">
     <UDropdown :items="items" :popper="{ placement: 'bottom-start' }">
       <UAvatar :src="userStore.userInfo?.user_info?.avatar_url" :alt="userStore.userInfo?.email ?? '...'" size="sm" />
 

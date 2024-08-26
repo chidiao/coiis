@@ -6,7 +6,7 @@
           repudiandae et, iure quas ut voluptas! Tempora quod similique id vel, blanditiis repellat est numquam!"
       img="https://rapidapi.com/hub/_next/image?url=%2Fhub%2Fimages%2Fdiscovery-hero2.png&w=1080&q=75"
     >
-      <UButton>Explore Blog</UButton>
+      <Button size="small">Explore Blog</Button>
     </CommonBanner>
 
     <TopGrids class="mt-5" />
@@ -40,6 +40,8 @@
 </template>
 
 <script setup>
+import Button from 'primevue/button'
+
 const { applicationApi } = useApis()
 const { data: categoryList, categoryStatus } = useAsyncData('topCategory', async () => {
   const { data } = await applicationApi.getCategoryList()

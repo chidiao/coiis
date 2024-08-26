@@ -17,9 +17,9 @@
         <UFormGroup label="Verification code" name="verification_code">
           <div class="flex justify-between items-center space-x-4">
             <UInput class="w-2/3" v-model="state.verification_code" placeholder="Enter your verification code" />
-            <UButton class="w-1/3 justify-center" @click="sendCode">
+            <Button class="w-1/3 justify-center" size="small" @click="sendCode">
               {{ countDown.countStr }}
-            </UButton>
+            </Button>
           </div>
         </UFormGroup>
 
@@ -27,12 +27,8 @@
           <UInput v-model="state.password" type="password" placeholder="Enter your password" />
         </UFormGroup>
 
-        <!-- <UFormGroup label="Pkey" name="pkey">
-          <UInput v-model="state.pkey" placeholder="Enter your pkey" readonly />
-        </UFormGroup> -->
-
-        <div class="pt-5">
-          <UButton class="rounded-full" size="md" type="submit" block :loading="loading">Reset password</UButton>
+        <div class="flex flex-col space-y-2 pt-5">
+          <Button size="small" type="submit" block :loading="loading">Reset password</Button>
         </div>
       </UForm>
     </div>

@@ -21,10 +21,12 @@
         </UFormGroup>
 
         <div class="flex flex-col space-y-2 pt-5">
-          <UButton class="rounded-full" size="md" type="submit" block :loading="loading">Continue</UButton>
+          <Button size="small" type="submit" block :loading="loading">Continue</Button>
 
           <div class="flex justify-center items-center">
-            <UButton variant="link" size="sm" to="/account/forget">Forget password</UButton>
+            <NuxtLink to="/account/forget">
+              <Button size="small" link>Forget password</Button>
+            </NuxtLink>
           </div>
         </div>
       </UForm>
