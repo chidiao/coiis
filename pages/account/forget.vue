@@ -9,28 +9,52 @@
         </div>
       </div>
 
-      <UForm :schema="schema" :state="state" class="space-y-5 py-8" @submit="onSubmit">
-        <UFormGroup label="Email" name="email">
-          <UInput v-model="state.email" placeholder="Enter your email" />
-        </UFormGroup>
+      <form class="flex flex-col py-8 gap-5 text-sm" @submit.prevent="onSubmit">
+        <div class="flex flex-col gap-2">
+          <label for="email">Email</label>
+          <InputText
+            placeholder="Enter your email"
+            v-model="formData.email"
+            size="small"
+            type="text"
+            @input="validateField('email')"
+          />
+          <small>{{ formErrors.email }}</small>
+        </div>
 
-        <UFormGroup label="Verification code" name="verification_code">
+        <div class="flex flex-col gap-2">
+          <label for="verification_code">Verification code</label>
           <div class="flex justify-between items-center space-x-4">
-            <UInput class="w-2/3" v-model="state.verification_code" placeholder="Enter your verification code" />
-            <Button class="w-1/3 justify-center" size="small" @click="sendCode">
+            <InputText
+              placeholder="Enter your verification code"
+              v-model="formData.verification_code"
+              size="small"
+              type="text"
+              @input="validateField('verification_code')"
+            />
+            <Button class="w-1/3 justify-center" size="small" @click="onSend">
               {{ countDown.countStr }}
             </Button>
           </div>
-        </UFormGroup>
-
-        <UFormGroup label="Password" name="password">
-          <UInput v-model="state.password" type="password" placeholder="Enter your password" />
-        </UFormGroup>
-
-        <div class="flex flex-col space-y-2 pt-5">
-          <Button size="small" type="submit" block :loading="loading">Reset password</Button>
+          <small>{{ formErrors.verification_code }}</small>
         </div>
-      </UForm>
+
+        <div class="flex flex-col gap-2">
+          <label for="password">Password</label>
+          <InputText
+            placeholder="Enter your password"
+            v-model="formData.password"
+            size="small"
+            type="password"
+            @input="validateField('password')"
+          />
+          <small v-if="formErrors.password">{{ formErrors.password }}</small>
+        </div>
+
+        <div class="flex flex-col pt-5">
+          <Button label="Reset password" type="submit" size="small" block :loading></Button>
+        </div>
+      </form>
     </div>
   </LoginBackground>
 </template>
@@ -44,6 +68,7 @@ import { z } from 'zod'
 
 const { userApi } = useApis()
 
+const formErrors = ref({})
 const schema = z.object({
   email: z.string().email('Invalid email'),
   password: z.string().min(8, 'Must be at least 8 characters'),
@@ -51,23 +76,38 @@ const schema = z.object({
   pkey: z.string()
 })
 
-const state = ref({
+const formData = ref({
   email: '',
   password: '',
   verification_code: '',
   pkey: ''
 })
 
+const validateField = (field) => {
+  try {
+    schema.pick({ [field]: true }).parse({ [field]: formData.value[field] })
+    formErrors.value[field] = null
+    return true
+  } catch (error) {
+    formErrors.value[field] = error.errors[0].message
+    return false
+  }
+}
 const countDown = useCountDown()
+const onSend = () => {
+  if (!validateField('email')) return
+
+  sendCode()
+}
 const sendCode = async () => {
-  if (!state.value.email) return
+  if (!formData.value.email) return
   if (countDown.counting.value) return
 
   countDown.start()
-  const { data } = await userApi.sendCodeResetPassword(state.value.email)
+  const { data } = await userApi.sendCodeResetPassword(formData.value.email)
 
   if (data?.pkey) {
-    state.value.pkey = data.pkey
+    formData.value.pkey = data.pkey
   } else {
     countDown.end()
   }
@@ -78,12 +118,22 @@ const toast = useToast()
 const router = useRouter()
 const loading = ref(false)
 const onSubmit = async () => {
+  try {
+    schema.parse(formData.value)
+    submit()
+  } catch (error) {
+    const errors = error.format()
+    const keys = Object.keys(errors)
+    keys.forEach((key) => (formErrors.value[key] = errors[key]._errors?.[0]))
+  }
+}
+
+const submit = async () => {
   loading.value = true
 
   try {
-    const { message } = await userApi.resetPassword(state.value)
+    const { message } = await userApi.resetPassword(formData.value)
     toast.add({ title: message })
-    userStore.logout()
     router.replace('/account/login')
   } finally {
     loading.value = false

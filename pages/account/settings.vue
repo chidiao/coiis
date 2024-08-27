@@ -9,8 +9,8 @@
 
     <AppLoading v-if="userStore.loading" />
 
-    <div v-if="!userStore.isLogin">
-      <UButton color="red">Sign in</UButton>
+    <div v-if="!userStore.isLogin && !userStore.loading">
+      <Button size="small" severity="danger">Sign in</Button>
     </div>
 
     <div v-if="!userStore.loading && userStore.isLogin">

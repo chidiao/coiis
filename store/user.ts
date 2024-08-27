@@ -8,12 +8,16 @@ export const useUserStore = defineStore('user', () => {
   const loading = ref(false)
   const getUserInfo = async () => {
     loading.value = true
-    const { userApi } = useApis()
-    const { data } = await userApi.getUserInfo()
-    loading.value = false
 
-    setUserInfo(data)
-    return data
+    try {
+      const { userApi } = useApis()
+      const { data } = await userApi.getUserInfo()
+      setUserInfo(data)
+      return data
+    } finally {
+      loading.value = false
+      return {}
+    }
   }
 
   const setUserInfo = (data?: LoginData) => {

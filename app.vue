@@ -5,6 +5,7 @@
     </NuxtLayout>
 
     <UNotifications />
+    <Toast />
   </div>
 </template>
 

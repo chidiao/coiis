@@ -11,17 +11,33 @@
         </div>
       </div>
 
-      <UForm :schema="schema" :state="state" class="space-y-5 py-8" @submit="login">
-        <UFormGroup label="Email" name="email">
-          <UInput v-model="state.email" placeholder="Enter your email" />
-        </UFormGroup>
+      <form class="flex flex-col py-8 gap-5 text-sm" @submit.prevent="onSubmit">
+        <div class="flex flex-col gap-2">
+          <label for="email">Email</label>
+          <InputText
+            placeholder="Enter your email"
+            v-model="formData.email"
+            size="small"
+            type="text"
+            @input="validateField('email')"
+          />
+          <small>{{ formErrors.email }}</small>
+        </div>
 
-        <UFormGroup label="Password" name="password">
-          <UInput v-model="state.password" type="password" placeholder="Enter your password" />
-        </UFormGroup>
+        <div class="flex flex-col gap-2">
+          <label for="password">Password</label>
+          <InputText
+            placeholder="Enter your password"
+            v-model="formData.password"
+            size="small"
+            type="password"
+            @input="validateField('password')"
+          />
+          <small v-if="formErrors.password">{{ formErrors.password }}</small>
+        </div>
 
         <div class="flex flex-col space-y-2 pt-5">
-          <Button size="small" type="submit" block :loading="loading">Continue</Button>
+          <Button label="Continue" size="small" type="submit" block :loading="loading"></Button>
 
           <div class="flex justify-center items-center">
             <NuxtLink to="/account/forget">
@@ -29,7 +45,7 @@
             </NuxtLink>
           </div>
         </div>
-      </UForm>
+      </form>
     </div>
   </LoginBackground>
 </template>
@@ -46,24 +62,47 @@ import type { LoginParams } from '@/types/user'
 const router = useRouter()
 const { userApi } = useApis()
 
+const formErrors = ref({})
 const schema = z.object({
   email: z.string().email('Invalid email'),
   password: z.string().min(8, 'Must be at least 8 characters')
 })
 
-const state = ref<LoginParams>({
+const formData = ref<LoginParams>({
   email: '',
   password: ''
 })
 
+const validateField = (field) => {
+  try {
+    schema.pick({ [field]: true }).parse({ [field]: formData.value[field] })
+    formErrors.value[field] = null
+    return true
+  } catch (error) {
+    formErrors.value[field] = error.errors[0].message
+    return false
+  }
+}
+
 const userStore = useUserStore()
 
 const loading = ref(false)
+const onSubmit = async () => {
+  try {
+    schema.parse(formData.value)
+    login()
+  } catch (error) {
+    const errors = error.format()
+    const keys = Object.keys(errors)
+    keys.forEach((key) => (formErrors.value[key] = errors[key]._errors?.[0]))
+  }
+}
+
 const login = async () => {
   loading.value = true
 
   try {
-    const { data } = await userApi.login(state.value)
+    const { data } = await userApi.login(formData.value)
     userStore.setUserInfo(data)
     router.replace('/')
   } finally {
