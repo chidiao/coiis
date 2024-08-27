@@ -39,13 +39,14 @@
 <script setup>
 import { z } from 'zod'
 
+const { msg } = useMsg()
 const countDown = useCountDown()
 const sendCode = async () => {
   try {
     emailSchema.parse(state.value.email)
   } catch (e) {
-    const msg = JSON.parse(e)[0].message
-    toast.add({ title: msg })
+    const error = JSON.parse(e)[0].message
+    msg.error({ detail: error })
     return
   }
 
@@ -78,7 +79,6 @@ const state = ref({
 })
 
 const userStore = useUserStore()
-const toast = useToast()
 const router = useRouter()
 const loading = ref(false)
 const onSubmit = async () => {
@@ -86,7 +86,7 @@ const onSubmit = async () => {
 
   try {
     const { message } = await userApi.putEmail(state.value)
-    toast.add({ title: message })
+    msg.success({ detail: message })
     userStore.getUserInfo()
   } finally {
     loading.value = false

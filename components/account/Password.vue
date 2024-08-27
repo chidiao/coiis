@@ -50,7 +50,7 @@ const state = ref({
 })
 
 const userStore = useUserStore()
-const toast = useToast()
+const msg = useMsg()
 const router = useRouter()
 const loading = ref(false)
 const onSubmit = async () => {
@@ -58,7 +58,7 @@ const onSubmit = async () => {
 
   try {
     const { message } = await userApi.modifyPassword(state.value)
-    toast.add({ title: message })
+    msg.error({ detail: message })
     userStore.logout()
     router.replace('/account/login')
   } finally {

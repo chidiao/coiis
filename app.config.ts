@@ -41,9 +41,6 @@ export default defineAppConfig({
           base: 'size-4'
         }
       }
-    },
-    notifications: {
-      position: 'top-0 bottom-[unset]'
     }
   }
 })

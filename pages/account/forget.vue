@@ -114,7 +114,7 @@ const sendCode = async () => {
 }
 
 const userStore = useUserStore()
-const toast = useToast()
+const msg = useMsg()
 const router = useRouter()
 const loading = ref(false)
 const onSubmit = async () => {
@@ -133,7 +133,7 @@ const submit = async () => {
 
   try {
     const { message } = await userApi.resetPassword(formData.value)
-    toast.add({ title: message })
+    msg.success({ detail: message })
     router.replace('/account/login')
   } finally {
     loading.value = false

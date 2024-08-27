@@ -18,8 +18,9 @@ export default defineNuxtPlugin((nuxtApp) => {
       if (response._data?.code === 0) {
         return response._data
       } else {
-        const toast = useToast()
-        toast.add({ title: response._data?.message, icon: 'i-heroicons:x-circle' })
+        const { $msg } = useNuxtApp()
+        $msg.add({ severity: 'error', summary: 'Error', detail: response._data?.message, life: 3000 })
+
         throw new Error(response._data?.message)
       }
     }

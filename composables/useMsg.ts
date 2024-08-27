@@ -3,8 +3,9 @@ import type { ToastMessageOptions } from 'primevue/toast'
 
 export const useMsg = () => {
   const showToast = (params: ToastMessageOptions) => {
+    const { life = 3000 } = params
     const toast = useToast()
-    toast.add(params)
+    toast.add({ ...params, life })
   }
 
   return {
