@@ -1,13 +1,11 @@
 <template>
   <DefaultLayout>
     <div class="grid gap-5">
-      <Tabs value="/account/settings">
+      <Tabs :value="active">
         <TabList>
-          <Tab v-for="i in links" :value="i.route">
-            <NuxtLink :to="i.route" class="space-x-3">
-              <i :class="[i.icon]"></i>
-              <span>{{ i.label }}</span>
-            </NuxtLink>
+          <Tab v-for="i in links" class="space-x-3" :value="i.route" @click="router.push(i.route)">
+            <i :class="[i.icon]"></i>
+            <span>{{ i.label }}</span>
           </Tab>
         </TabList>
       </Tabs>
@@ -18,6 +16,11 @@
 
 <script setup>
 import DefaultLayout from '@/layouts/default.vue'
+
+const router = useRouter()
+const route = useRoute()
+
+const active = computed(() => route.path)
 
 const links = [
   {

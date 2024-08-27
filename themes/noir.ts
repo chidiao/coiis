@@ -57,6 +57,5 @@ export const Noir = definePreset(Aura, {
         }
       }
     }
-  },
-  components
+  }
 })

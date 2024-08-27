@@ -9,17 +9,15 @@
         <div class="flex justify-between items-center">
           <div class="text-xl font-bold dark:text-white">All Results (650)</div>
 
-          <USelectMenu v-model="value" :options="options" />
+          <Select v-model="value" :options="options" />
         </div>
 
-        <UInput
-          class="w-full my-8"
-          icon="i-heroicons-magnifying-glass-20-solid"
-          size="xs"
-          color="white"
-          :trailing="false"
-          placeholder="Search..."
-        />
+        <div class="flex flex-col py-8">
+          <IconField>
+            <InputIcon class="pi pi-search" />
+            <InputText placeholder="Search" class="w-full" />
+          </IconField>
+        </div>
 
         <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           <ApiCard

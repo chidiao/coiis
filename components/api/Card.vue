@@ -1,17 +1,17 @@
 <template>
   <div class="group w-full h-48 flex flex-col rounded-lg border dark:border-gray-700 p-3 cursor-pointer">
     <div class="w-full h-5 flex justify-between items-center mb-3">
-      <UBadge size="xs" variant="soft">{{ tag }}</UBadge>
+      <Tag :value="tag" />
 
       <div v-auto-animate>
-        <UIcon name="i-heroicons-heart" v-if="isLike" />
-        <UIcon name="i-heroicons-heart-solid" class="text-red-500" v-else />
+        <i class="pi pi-heart" v-if="isLike"></i>
+        <i class="pi pi-heart-fill" style="color: red" v-else></i>
       </div>
     </div>
 
     <div class="w-full grow flex justify-start items-start">
       <div class="shrink-0 mr-2">
-        <UAvatar class="size-8" :src="icon" />
+        <Avatar :image="icon" shape="circle" />
       </div>
 
       <div class="grow h-full flex flex-col justify-between">

@@ -13,12 +13,7 @@
         desc="Used to sign in, for email receipts and product updates."
         :help="formErrors.email"
       >
-        <InputText
-          v-model="formData.email"
-          size="small"
-          placeholder="Enter your new email"
-          @input="validateField('email')"
-        />
+        <InputText v-model="formData.email" placeholder="Enter your new email" @input="validateField('email')" />
       </AccountInputGroup>
 
       <AccountInputGroup label="Verification code" :help="formErrors.verification_code">
@@ -26,11 +21,10 @@
           <InputText
             placeholder="Enter your verification code"
             v-model="formData.verification_code"
-            size="small"
             class="grow"
             @input="validateField('verification_code')"
           />
-          <Button class="w-1/3 justify-center" size="small" @click="onSend">
+          <Button class="w-1/3 justify-center" @click="onSend">
             {{ countDown.countStr }}
           </Button>
         </div>
@@ -39,7 +33,6 @@
       <AccountInputGroup label="Password" :help="formErrors.password">
         <InputText
           v-model="formData.password"
-          size="small"
           type="password"
           placeholder="Enter your password"
           @input="validateField('password')"
@@ -47,7 +40,7 @@
       </AccountInputGroup>
 
       <div class="py-8 w-full flex justify-end">
-        <Button label="Reset email" type="submit" size="small" :loading="loading"></Button>
+        <Button label="Reset email" type="submit" :loading="loading"></Button>
       </div>
     </form>
   </div>

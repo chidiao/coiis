@@ -11,7 +11,6 @@
       <AccountInputGroup label="Old password" :help="formErrors.old_password">
         <InputText
           v-model="formData.old_password"
-          size="small"
           type="password"
           placeholder="Enter your old password"
           @input="validateField('old_password')"
@@ -21,7 +20,6 @@
       <AccountInputGroup label="New password" :help="formErrors.password">
         <InputText
           v-model="formData.password"
-          size="small"
           type="password"
           placeholder="Enter your new password"
           @input="validateField('password')"
@@ -31,7 +29,6 @@
       <AccountInputGroup label="Confirm password" :help="formErrors.confirm">
         <InputText
           v-model="formData.confirm"
-          size="small"
           type="password"
           placeholder="Confirm your new password"
           @input="validateField('confirm')"
@@ -39,7 +36,7 @@
       </AccountInputGroup>
 
       <div class="py-8 w-full flex justify-end">
-        <Button label="Reset password" type="submit" size="small" :loading="loading"></Button>
+        <Button label="Reset password" type="submit" :loading="loading"></Button>
       </div>
     </form>
   </div>
