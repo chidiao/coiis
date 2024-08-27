@@ -7,56 +7,70 @@
       </div>
     </div>
 
-    <UForm :schema="schema" :state="state" class="w-full" @submit="onSubmit">
-      <AccountFormGroup
+    <form @submit.prevent="onSubmit">
+      <AccountInputGroup
         label="New email"
-        name="email"
-        description="Used to sign in, for email receipts and product updates."
+        desc="Used to sign in, for email receipts and product updates."
+        :help="formErrors.email"
       >
-        <UInput v-model="state.email" type="password" placeholder="Enter your new email" />
-      </AccountFormGroup>
+        <InputText
+          v-model="formData.email"
+          size="small"
+          placeholder="Enter your new email"
+          @input="validateField('email')"
+        />
+      </AccountInputGroup>
 
-      <AccountFormGroup label="Verification code" name="verification_code">
+      <AccountInputGroup label="Verification code" :help="formErrors.verification_code">
         <div class="flex justify-between items-center space-x-4">
-          <UInput class="w-2/3" v-model="state.verification_code" placeholder="Enter your verification code" />
-          <UButton class="w-1/3 justify-center" size="sm" @click="sendCode">
+          <InputText
+            placeholder="Enter your verification code"
+            v-model="formData.verification_code"
+            size="small"
+            class="grow"
+            @input="validateField('verification_code')"
+          />
+          <Button class="w-1/3 justify-center" size="small" @click="onSend">
             {{ countDown.countStr }}
-          </UButton>
+          </Button>
         </div>
-      </AccountFormGroup>
+      </AccountInputGroup>
 
-      <AccountFormGroup label="Password" name="password">
-        <UInput v-model="state.password" type="password" placeholder="Enter your password" />
-      </AccountFormGroup>
+      <AccountInputGroup label="Password" :help="formErrors.password">
+        <InputText
+          v-model="formData.password"
+          size="small"
+          type="password"
+          placeholder="Enter your password"
+          @input="validateField('password')"
+        />
+      </AccountInputGroup>
 
       <div class="py-8 w-full flex justify-end">
-        <UButton type="submit" size="sm" :loading="loading">Reset email</UButton>
+        <Button label="Reset email" type="submit" size="small" :loading="loading"></Button>
       </div>
-    </UForm>
+    </form>
   </div>
 </template>
 
 <script setup>
 import { z } from 'zod'
 
-const { msg } = useMsg()
+const msg = useMsg()
 const countDown = useCountDown()
-const sendCode = async () => {
-  try {
-    emailSchema.parse(state.value.email)
-  } catch (e) {
-    const error = JSON.parse(e)[0].message
-    msg.error({ detail: error })
-    return
-  }
+const onSend = () => {
+  if (!validateField('email')) return
 
+  sendCode()
+}
+const sendCode = async () => {
   if (countDown.counting.value) return
 
   countDown.start()
-  const { data } = await userApi.sendCode(state.value.email)
+  const { data } = await userApi.sendCode(formData.value.email)
 
   if (data?.pkey) {
-    state.value.pkey = data.pkey
+    formData.value.pkey = data.pkey
   } else {
     countDown.end()
   }
@@ -64,28 +78,50 @@ const sendCode = async () => {
 
 const { userApi } = useApis()
 
-const emailSchema = z.string().email('Invalid email')
-const schema = z.object({
-  email: z.string().email('Invalid email'),
-  password: z.string(),
-  verification_code: z.string()
-})
-
-const state = ref({
+const formData = ref({
   email: '',
   password: '',
   verification_code: '',
   pkey: ''
 })
 
+const schema = z.object({
+  email: z.string().email('Invalid email'),
+  password: z.string(),
+  verification_code: z.string()
+})
+
+const formErrors = ref({})
+const validateField = (field) => {
+  try {
+    schema.pick({ [field]: true }).parse({ [field]: formData.value[field] })
+    formErrors.value[field] = null
+    return true
+  } catch (error) {
+    formErrors.value[field] = error.errors[0].message
+    return false
+  }
+}
+
 const userStore = useUserStore()
 const router = useRouter()
 const loading = ref(false)
-const onSubmit = async () => {
+const onSubmit = () => {
+  try {
+    schema.parse(formData.value)
+    submit()
+  } catch (error) {
+    const errors = error.format()
+    const keys = Object.keys(errors)
+    keys.forEach((key) => (formErrors.value[key] = errors[key]._errors?.[0]))
+  }
+}
+
+const submit = async () => {
   loading.value = true
 
   try {
-    const { message } = await userApi.putEmail(state.value)
+    const { message } = await userApi.putEmail(formData.value)
     msg.success({ detail: message })
     userStore.getUserInfo()
   } finally {

@@ -7,23 +7,41 @@
       </div>
     </div>
 
-    <UForm :schema="schema" :state="state" class="w-full" @submit="onSubmit">
-      <AccountFormGroup label="Old password" name="old_password">
-        <UInput v-model="state.old_password" type="password" placeholder="Enter your old password" />
-      </AccountFormGroup>
+    <form @submit.prevent="onSubmit">
+      <AccountInputGroup label="Old password" :help="formErrors.old_password">
+        <InputText
+          v-model="formData.old_password"
+          size="small"
+          type="password"
+          placeholder="Enter your old password"
+          @input="validateField('old_password')"
+        />
+      </AccountInputGroup>
 
-      <AccountFormGroup label="New password" name="password">
-        <UInput v-model="state.password" type="password" placeholder="Enter your new password" />
-      </AccountFormGroup>
+      <AccountInputGroup label="New password" :help="formErrors.password">
+        <InputText
+          v-model="formData.password"
+          size="small"
+          type="password"
+          placeholder="Enter your new password"
+          @input="validateField('password')"
+        />
+      </AccountInputGroup>
 
-      <AccountFormGroup label="Confirm password" name="confirm">
-        <UInput v-model="state.confirm" type="password" placeholder="Confirm your new password" />
-      </AccountFormGroup>
+      <AccountInputGroup label="Confirm password" :help="formErrors.confirm">
+        <InputText
+          v-model="formData.confirm"
+          size="small"
+          type="password"
+          placeholder="Confirm your new password"
+          @input="validateField('confirm')"
+        />
+      </AccountInputGroup>
 
       <div class="py-8 w-full flex justify-end">
-        <UButton type="submit" size="sm" :loading="loading">Reset password</UButton>
+        <Button label="Reset password" type="submit" size="small" :loading="loading"></Button>
       </div>
-    </UForm>
+    </form>
   </div>
 </template>
 
@@ -32,32 +50,50 @@ import { z } from 'zod'
 
 const { userApi } = useApis()
 
-const schema = z
-  .object({
-    old_password: z.string().min(8, 'Must be at least 8 characters'),
-    password: z.string().min(8, 'Must be at least 8 characters'),
-    confirm: z.string().min(8, 'Must be at least 8 characters')
-  })
-  .refine((data) => data.password === data.confirm, {
-    message: "Passwords don't match",
-    path: ['confirm']
-  })
-
-const state = ref({
+const formData = ref({
   old_password: '',
   password: '',
   confirm: ''
 })
+
+const schema = z.object({
+  old_password: z.string().min(8, 'Must be at least 8 characters'),
+  password: z.string().min(8, 'Must be at least 8 characters'),
+  confirm: z.string().min(8, 'Must be at least 8 characters')
+})
+
+const formErrors = ref({})
+const validateField = (field) => {
+  try {
+    schema.pick({ [field]: true }).parse({ [field]: formData.value[field] })
+    formErrors.value[field] = null
+    return true
+  } catch (error) {
+    formErrors.value[field] = error.errors[0].message
+    return false
+  }
+}
 
 const userStore = useUserStore()
 const msg = useMsg()
 const router = useRouter()
 const loading = ref(false)
 const onSubmit = async () => {
+  try {
+    schema.parse(formData.value)
+    submit()
+  } catch (error) {
+    const errors = error.format()
+    const keys = Object.keys(errors)
+    keys.forEach((key) => (formErrors.value[key] = errors[key]._errors?.[0]))
+  }
+}
+
+const submit = async () => {
   loading.value = true
 
   try {
-    const { message } = await userApi.modifyPassword(state.value)
+    const { message } = await userApi.modifyPassword(formData.value)
     msg.error({ detail: message })
     userStore.logout()
     router.replace('/account/login')

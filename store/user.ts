@@ -14,9 +14,10 @@ export const useUserStore = defineStore('user', () => {
       const { data } = await userApi.getUserInfo()
       setUserInfo(data)
       return data
+    } catch {
+      return {}
     } finally {
       loading.value = false
-      return {}
     }
   }
 

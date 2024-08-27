@@ -10,61 +10,59 @@
     <AppLoading v-if="userStore.loading" />
 
     <div v-if="!userStore.isLogin && !userStore.loading">
-      <Button size="small" severity="danger">Sign in</Button>
+      <Button severity="danger">Sign in</Button>
     </div>
 
     <div v-if="!userStore.loading && userStore.isLogin">
       <div class="w-full">
-        <AccountFormGroup label="Nickname" description="Your name may appear around Coiis.">
-          <UInput placeholder="Enter your name" v-model="state.nickname" />
-        </AccountFormGroup>
+        <AccountInputGroup label="Nickname" desc="Your name may appear around Coiis.">
+          <InputText placeholder="Enter your name" v-model="formData.nickname" />
+        </AccountInputGroup>
 
-        <AccountFormGroup label="First name">
-          <UInput v-model="state.first_name" />
-        </AccountFormGroup>
+        <AccountInputGroup label="First name">
+          <InputText v-model="formData.first_name" />
+        </AccountInputGroup>
 
-        <AccountFormGroup label="Last name">
-          <UInput v-model="state.last_name" />
-        </AccountFormGroup>
+        <AccountInputGroup label="Last name">
+          <InputText v-model="formData.last_name" />
+        </AccountInputGroup>
 
-        <AccountFormGroup label="Phone number">
-          <UInput v-model="state.phone_number" />
-        </AccountFormGroup>
+        <AccountInputGroup label="Phone number">
+          <InputText v-model="formData.phone_number" />
+        </AccountInputGroup>
 
-        <UDivider />
+        <AccountInputGroup label="Age">
+          <InputText type="number" v-model="formData.user_info!.user_age" />
+        </AccountInputGroup>
 
-        <AccountFormGroup label="Age">
-          <UInput type="number" v-model="state.user_info!.user_age" />
-        </AccountFormGroup>
-
-        <AccountFormGroup label="Gender">
-          <USelectMenu
-            v-model="state.user_info!.user_gender"
+        <AccountInputGroup label="Gender">
+          <Select
+            v-model="formData.user_info!.user_gender"
             :options="genders"
             placeholder="-"
-            value-attribute="value"
-            option-attribute="label"
+            optionValue="value"
+            optionLabel="label"
           />
-        </AccountFormGroup>
+        </AccountInputGroup>
 
-        <AccountFormGroup label="Avatar url">
-          <UInput v-model="state.user_info!.avatar_url" />
-        </AccountFormGroup>
+        <AccountInputGroup label="Avatar url">
+          <InputText v-model="formData.user_info!.avatar_url" />
+        </AccountInputGroup>
 
-        <AccountFormGroup label="Company name">
-          <UInput v-model="state.user_info!.company_name" />
-        </AccountFormGroup>
+        <AccountInputGroup label="Company name">
+          <InputText v-model="formData.user_info!.company_name" />
+        </AccountInputGroup>
 
-        <AccountFormGroup label="Company tel">
-          <UInput v-model="state.user_info!.company_tel" />
-        </AccountFormGroup>
+        <AccountInputGroup label="Company tel">
+          <InputText v-model="formData.user_info!.company_tel" />
+        </AccountInputGroup>
 
-        <AccountFormGroup label="Address">
-          <UInput v-model="state.user_info!.address" />
-        </AccountFormGroup>
+        <AccountInputGroup label="Address">
+          <InputText v-model="formData.user_info!.address" />
+        </AccountInputGroup>
 
         <div class="py-8 w-full flex justify-end">
-          <UButton size="sm" :loading="updateLoading" @click="update">Save changes</UButton>
+          <Button label="Save changes" :loading="updateLoading" @click="update"></Button>
         </div>
       </div>
     </div>
@@ -80,10 +78,10 @@ import type { UserInfoParams } from '@/types/user'
 const userStore = useUserStore()
 const getData = async () => {
   const info = await userStore.getUserInfo()
-  state.value = Object.assign({}, info, { user_info: { ...info?.user_info } })
+  formData.value = Object.assign({}, info, { user_info: { ...info?.user_info } })
 }
 
-const state = ref<UserInfoParams>({
+const formData = ref<UserInfoParams>({
   user_info: {}
 })
 
@@ -99,7 +97,7 @@ const updateLoading = ref(false)
 const update = async () => {
   updateLoading.value = true
   try {
-    const { data } = await userApi.putUserInfo(state.value)
+    const { data } = await userApi.putUserInfo(formData.value)
   } finally {
     getData()
     updateLoading.value = false
