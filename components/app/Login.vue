@@ -1,35 +1,38 @@
 <template>
   <div class="flex items-center">
     <div class="hidden xl:flex items-center space-x-3">
-      <Button v-for="(i, k) in items[0]" @click="i.click" size="small" :severity="i.severity">
-        {{ i.label }}
-      </Button>
+      <NuxtLink v-for="i in items" :to="i.route">
+        <Button :label="i.label" size="small" :severity="i.severity" />
+      </NuxtLink>
     </div>
 
-    <UDropdown :items="items" :popper="{ placement: 'bottom-start' }">
-      <UIcon name="i-heroicons-bars-3" class="size-6 xl:hidden" />
-    </UDropdown>
+    <div class="flex xl:hidden">
+      <Button icon="pi pi-bars" size="small" @click="(e) => menu.toggle(e)"></Button>
+      <TieredMenu ref="menu" :model="items" popup>
+        <template #item="{ item }">
+          <NuxtLink :to="item.route">
+            <div class="py-2 px-5">
+              {{ item.label }}
+            </div>
+          </NuxtLink>
+        </template>
+      </TieredMenu>
+    </div>
   </div>
 </template>
 
 <script setup>
 const router = useRouter()
-
+const menu = ref()
 const items = [
-  [
-    {
-      label: 'Sign In',
-      click: () => {
-        router.push('/account/login')
-      }
-    },
-    {
-      label: 'Sign Up',
-      severity: 'secondary',
-      click: () => {
-        router.push('/account/signup')
-      }
-    }
-  ]
+  {
+    label: 'Sign In',
+    route: '/account/login'
+  },
+  {
+    label: 'Sign Up',
+    severity: 'secondary',
+    route: '/account/signup'
+  }
 ]
 </script>

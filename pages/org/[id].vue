@@ -1,6 +1,8 @@
 <template>
   <div class="container mx-auto p-5 dark:text-white">
-    <UButton icon="i-heroicons-arrow-left" class="-ml-3" size="lg" variant="link" to="/org">All Organizations</UButton>
+    <NuxtLink to="/org">
+      <Button icon="pi pi-arrow-left" class="-ml-3" label="All Organizations" link />
+    </NuxtLink>
 
     <div class="py-5 max-w-2xl text-gray-500 dark:text-zinc-400">
       <div class="text-3xl font-bold text-black dark:text-white">{{ org?.organization_name }}</div>

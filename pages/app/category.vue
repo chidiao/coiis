@@ -9,14 +9,10 @@
         </div>
       </div>
 
-      <UInput
-        class="max-w-64 mt-5 xl:mt-auto"
-        icon="i-heroicons-magnifying-glass-20-solid"
-        size="xs"
-        color="white"
-        :trailing="false"
-        placeholder="Search..."
-      />
+      <IconField class="mt-5">
+        <InputIcon class="pi pi-search" />
+        <InputText v-model="value1" placeholder="Search" />
+      </IconField>
     </div>
 
     <div v-auto-animate>

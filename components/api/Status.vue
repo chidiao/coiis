@@ -3,7 +3,7 @@
     <div class="w-full flex justify-between items-center text-xs dark:text-white">
       <div>{{ title }}</div>
 
-      <UIcon name="i-heroicons-exclamation-circle" class="size-4" />
+      <i class="pi pi-info-circle"></i>
     </div>
 
     <div class="text-lg font-bold mt-3 dark:text-white">

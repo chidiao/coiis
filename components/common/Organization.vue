@@ -10,19 +10,21 @@
 
     <div class="px-2 py-3 xl:px-5 xl:py-5 xl:flex items-center xl:gap-5">
       <div class="shrink-0">
-        <UAvatar :src="organization_logo" size="lg" />
+        <Avatar :image="organization_logo" size="large" />
       </div>
 
       <div class="grow">
         <div class="text-sm">{{ organization_name }}</div>
         <div class="text-sm font-bold mt-2">{{ organization_description }}</div>
         <div class="flex items-center gap-1 flex-wrap cursor-pointer py-2">
-          <UBadge variant="soft" size="xs">{{ organization_code }}</UBadge>
+          <Tag>{{ organization_code }}</Tag>
         </div>
       </div>
 
       <div class="py-2 flex items-center shrink-0">
-        <UButton icon="i-heroicons-paper-airplane" class="rounded-full" trailing :to="`/org/${id}`">Join now</UButton>
+        <NuxtLink :to="`/org/${id}`">
+          <Button icon="pi pi-angle-double-right" iconPos="right" label="Join now" rounded />
+        </NuxtLink>
       </div>
     </div>
   </div>
