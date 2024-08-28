@@ -1,4 +1,4 @@
-import { Noir } from './themes/noir'
+import { AuraTheme } from './themes/aura'
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
@@ -13,12 +13,13 @@ export default defineNuxtConfig({
     'nuxt-svgo'
   ],
   primevue: {
+    autoImport: false,
     composables: {
       exclude: ['useToast']
     },
     options: {
       theme: {
-        preset: Noir,
+        preset: AuraTheme,
         options: {
           darkModeSelector: '.dark'
         }
