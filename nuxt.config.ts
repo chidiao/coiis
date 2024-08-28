@@ -42,6 +42,8 @@ export default defineNuxtConfig({
     '/app': { prerender: true },
     '/app/category': { prerender: true },
     '/app/*': { ssr: false },
-    '/account/*': { ssr: false }
+    '/account/*': { ssr: false },
+    '/api/*': { ssr: false },
+    '/org/*': { ssr: false }
   }
 })
