@@ -1,16 +1,14 @@
 <template>
   <div class="flex flex-col">
-    <NuxtLink :class="[sizeClass, colorClass]" v-for="i in short" :to="`/api/${i.id}`">
+    <NuxtLink class="pl-[50px]" :class="[baseClass, colorClass]" v-for="i in short" :to="`/api/${i.id}`">
       {{ i.category_name }}
     </NuxtLink>
-    <NuxtLink :class="[sizeClass, colorClass]" to="/app/category">All Categories</NuxtLink>
+    <NuxtLink class="pl-[50px]" :class="[baseClass, colorClass]" to="/app/category">All Categories</NuxtLink>
   </div>
 </template>
 
 <script setup lang="ts">
-const sizeClass = 'pl-[50px] px-5 py-3 text-xs rounded-md'
-const colorClass = 'text-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 dark:text-zinc-400 dark:hover:text-white'
-
+import { baseClass, colorClass } from './config'
 const { applicationApi } = useApis()
 const { data: list } = useAsyncData('topCategory', async () => {
   const { data } = await applicationApi.getCategoryList()

@@ -1,44 +1,44 @@
 <template>
   <div class="flex justify-center items-center">
-    <UDropdown :items="items" :popper="{ placement: 'bottom-start' }">
-      <MyAvatar />
+    <MyAvatar @click="(e) => menu.toggle(e)" />
 
-      <template #account>
-        <div class="flex items-center mb-px">
-          <MyAvatar />
-
-          <div>{{ userStore.userInfo?.nickname ?? userStore.userInfo?.email ?? '...' }}</div>
-        </div>
+    <TieredMenu ref="menu" :model="items" popup>
+      <template #item="{ item }">
+        <NuxtLink :to="item.route" @click="() => item.click?.()">
+          <div class="py-2 px-3 flex gap-2 items-center">
+            <i :class="item.icon"></i>
+            <span>{{ item.label }}</span>
+          </div>
+        </NuxtLink>
       </template>
-    </UDropdown>
+    </TieredMenu>
   </div>
 </template>
 
 <script lang="tsx" setup>
 const userStore = useUserStore()
+const menu = ref()
 const items = [
-  [
-    {
-      slot: 'account'
+  {
+    label: 'Settings',
+    icon: 'pi pi-cog',
+    route: '/account/settings'
+  },
+  {
+    label: 'Logout',
+    icon: 'pi pi-sign-out',
+    click: () => {
+      userStore.logout()
     }
-  ],
-  [
-    {
-      label: 'Settings',
-      icon: 'i-feather-settings',
-      to: '/account/settings'
-    },
-    {
-      label: 'Logout',
-      icon: 'i-feather-log-out',
-      click: () => {
-        userStore.logout()
-      }
-    }
-  ]
+  }
 ]
 
 const MyAvatar = () => (
-  <Avatar image={userStore.userInfo?.user_info?.avatar_url} alt={userStore.userInfo?.email ?? '...'} shape="circle" />
+  <Avatar
+    class="cursor-pointer"
+    image={userStore.userInfo?.user_info?.avatar_url}
+    alt={userStore.userInfo?.email ?? '...'}
+    shape="circle"
+  />
 )
 </script>
