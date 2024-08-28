@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PrimeVue + CDN</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <style>
+      html {
+        font-size: 14px;
+        font-family: 'Inter var';
+      }
+    </style>
+  </head>
+
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/primevue/umd/primevue.min.js"></script>
+    <script src="https://unpkg.com/@primevue/themes/umd/aura.min.js"></script>
+
+    <div id="app">
+      <p-datepicker v-model="date"></p-datepicker>
+      <br /><br />
+      {{ date }}
+    </div>
+
+    <script>
+      const { createApp, ref } = Vue
+
+      const app = createApp({
+        setup() {
+          const date = ref()
+
+          return {
+            date
+          }
+        }
+      })
+
+      app.use(PrimeVue.Config, {
+        theme: {
+          preset: PrimeVue.Themes.Aura
+        }
+      })
+
+      app.component('p-datepicker', PrimeVue.DatePicker)
+
+      app.mount('#app')
+    </script>
+  </body>
+</html>
